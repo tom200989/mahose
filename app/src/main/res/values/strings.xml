@@ -6,5 +6,6 @@
     <string name="ok">OK</string>
     <string name="permission_application">Permission application</string>
     <string name="if_you_want_to_use_app">If you want to use the function of the app, please agree to the permission application first</string>
-    
+    <string name="version_will_be_done">Version download will be done\nApp will restart and re-install</string>
+    <string name="current_upgrade_error">Current upgrade error\nplease restart app</string>
 </resources>
