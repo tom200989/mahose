@@ -1,3 +1,10 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyDashes">
     <string name="app_name">mahose</string>
+    <string name="tv_copyright">Copyright © 2021-2091 YuanHai.</string>
+    <string name="loading_the_new_version">Loading the New Version</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="permission_application">Permission application</string>
+    <string name="if_you_want_to_use_app">If you want to use the function of the app, please agree to the permission application first</string>
+    
 </resources>

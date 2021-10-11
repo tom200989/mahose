@@ -6,11 +6,13 @@ import com.hiber.bean.RootProperty
 import com.hiber.hiber.BuildConfig
 import com.hiber.hiber.RootMAActivity
 import com.mahose.mahose.R
+import com.mahose.mahose.ue.frag.Frag_splash
 import com.mahose.mahose.ue.frag.Frag_test
 
 class MainActivity : RootMAActivity() {
 
     var frags = arrayOf(
+        Frag_splash::class.java, // 启动
         Frag_test::class.java // 测试
     )
 
@@ -26,7 +28,7 @@ class MainActivity : RootMAActivity() {
         property.packageName = "com.mahose.mahose"
         return property
     }
-
+    
     override fun onNexts() {
 
     }

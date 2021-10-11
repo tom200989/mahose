@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_color"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <!-- 图标 -->
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/iv_icon"
+        app:layout_widthPercent="72.5%w" />
+
+    <!-- 版权 -->
+    <TextView
+        android:id="@+id/tv_copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/tv_copyright"
+        app:layout_textSizePercent="1.5%sh" />
+
+    <!-- 升级信息 -->
+    <com.hiber.tools.layout.PercentLinearLayout
+        android:id="@+id/ll_upgrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_icon"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_marginTopPercent="10%sh"
+        app:layout_widthPercent="50%sw">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/loading_the_new_version"
+            android:textColor="@color/black_color"
+            app:layout_textSizePercent="2%sh" />
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="0%"
+            android:textColor="@color/black_color"
+            app:layout_marginTopPercent="5%sh"
+            app:layout_textSizePercent="3%sh" />
+
+    </com.hiber.tools.layout.PercentLinearLayout>
+
+</com.hiber.tools.layout.PercentRelativeLayout>
