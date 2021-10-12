@@ -2,6 +2,9 @@ package com.mahose.mahose.ue.frag
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.os.Process
@@ -10,9 +13,9 @@ import com.hiber.bean.PermissBean
 import com.hiber.bean.StringBean
 import com.hiber.hiber.RootFrag
 import com.logma.logma.tool.Logma
+import com.mahose.mahose.BuildConfig
 import com.mahose.mahose.R
 import com.mahose.mahose.helper.UpdateHelper
-import kotlinx.android.synthetic.main.frag_splash.*
 
 
 /*
@@ -89,8 +92,8 @@ class Frag_splash : RootFrag() {
         updateHelper.onCheckEndListener = { isneed ->
             // 如需升级 - 弹出视图直接联网升级
             if (isneed) {
-                Logma.vsd(TAG, "toCheckVersion() -> 进入升级流程")
-                toUpgrade()
+                Logma.vsd(TAG, "toCheckVersion() -> 打开google play app页面, 让用户自己去下载安装")
+                updateHelper.openUrl(activity)
 
             } else {// 不需要升级的 - 直接跳转到主页
                 Logma.vsd(TAG, "toCheckVersion() -> 跳转到主页")
@@ -100,31 +103,4 @@ class Frag_splash : RootFrag() {
         updateHelper.check()
     }
 
-    /**
-     * 进入升级流程
-     */
-    private fun toUpgrade() {
-        Logma.vsd(TAG, "toCheckVersion() -> 进入正式升级流程")
-        val updateHelper = UpdateHelper()
-        // 升级开始
-        updateHelper.onUpdateStartListener = {
-            Logma.vsd(TAG, "toUpgrade() -> 即将开始升级")
-            ll_upgrade.visibility = View.VISIBLE
-        }
-        // 升级进度
-        updateHelper.onUpdateProgressListener = { tv_upgrade_progress.text = "$it%" }
-        // 升级完成
-        updateHelper.onUpdateFinishListener = {
-            Logma.isd(TAG, "toUpgrade() -> 升级完成")
-            tv_upgrade_des.text = getRootString(R.string.version_will_be_done)
-            tv_upgrade_progress.text = "100%"
-        }
-        // 升级错误
-        updateHelper.onUpdateErrorListener = {
-            Logma.esd(TAG, "toUpgrade() -> 升级错误: $it")
-            tv_upgrade_des.text = getRootString(R.string.current_upgrade_error)
-        }
-        updateHelper.update(activity)
-    }
-    
 }
