@@ -6,9 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ue.activity.MainActivity">
 
+    <com.mahose.mahose.widget.TabWidget
+        android:id="@+id/wd_tab"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+
     <FrameLayout
         android:id="@+id/fl_contain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/wd_tab"/>
 
 </com.hiber.tools.layout.PercentRelativeLayout>

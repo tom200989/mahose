@@ -3,13 +3,16 @@ package com.mahose.mahose.ue.frag
 import android.view.View
 import com.hiber.hiber.RootFrag
 import com.mahose.mahose.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 /*
  * Created by PD on 2021/10/9.
  */
-class Frag_home:RootFrag() {
+class Frag_pic:RootFrag() {
     override fun onInflateLayout(): Int {
-        return R.layout.frag_home
+        // 显示tab
+        activity.wd_tab.visibility = View.VISIBLE 
+        return R.layout.frag_pic
     }
 
     override fun onNexts(p0: Any?, p1: View?, p2: String?) {

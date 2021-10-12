@@ -2,20 +2,19 @@ package com.mahose.mahose.ue.frag
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.os.Process
 import android.view.View
+import butterknife.OnClick
 import com.hiber.bean.PermissBean
 import com.hiber.bean.StringBean
 import com.hiber.hiber.RootFrag
 import com.logma.logma.tool.Logma
-import com.mahose.mahose.BuildConfig
 import com.mahose.mahose.R
 import com.mahose.mahose.helper.UpdateHelper
+import com.mahose.mahose.widget.TabWidget
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 /*
@@ -68,6 +67,25 @@ class Frag_splash : RootFrag() {
     override fun onNexts(p0: Any?, p1: View?, p2: String?) {
         // 检查更新 (第一个页面中有跳转, 需要用handler包裹, 否则视图可能未加载完毕出现白屏)
         Handler(Looper.getMainLooper()).postDelayed({ toCheckVersion() }, 200)
+        // 设置tab点击
+        setTabClick()
+    }
+
+    /**
+     * 设置tab点击
+     */
+    private fun setTabClick() {
+        activity.wd_tab.onTabClickListener = { enum ->
+            Logma.i(TAG, "正在切换 ${enum.name} 页")
+            when (enum) {
+                // 跳转到视频页
+                TabWidget.TAB_ENUM.VIDEO -> toFrag(javaClass, Frag_video::class.java, null, true, 0)
+                // 跳转到图片页
+                TabWidget.TAB_ENUM.PIC -> toFrag(javaClass, Frag_pic::class.java, null, true, 0)
+                // 跳转到设置页
+                TabWidget.TAB_ENUM.SETTING -> toFrag(javaClass, Frag_setting::class.java, null, true, 0)
+            }
+        }
     }
 
     /**
@@ -97,7 +115,7 @@ class Frag_splash : RootFrag() {
 
             } else {// 不需要升级的 - 直接跳转到主页
                 Logma.vsd(TAG, "toCheckVersion() -> 跳转到主页")
-                toFrag(javaClass, Frag_home::class.java, null, true, 2000)
+                toFrag(javaClass, Frag_video::class.java, null, true, 2000)
             }
         }
         updateHelper.check()
