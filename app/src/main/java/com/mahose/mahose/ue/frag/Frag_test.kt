@@ -8,16 +8,17 @@ import com.mahose.mahose.R
  * Created by PD on 2021/10/8.
  */
 class Frag_test : RootFrag() {
-    
+
     override fun onInflateLayout(): Int {
         return R.layout.frag_test
     }
 
     override fun onNexts(p0: Any?, p1: View?, p2: String?) {
-        
+
     }
 
     override fun onBackPresss(): Boolean {
-        return false
+        toFrag(javaClass, Frag_video::class.java, null, true, 0)
+        return true
     }
 }

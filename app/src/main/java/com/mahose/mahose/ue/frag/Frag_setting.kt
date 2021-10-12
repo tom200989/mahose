@@ -8,10 +8,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 /*
  * Created by PD on 2021/10/9.
  */
-class Frag_setting:RootFrag() {
+class Frag_setting : RootFrag() {
     override fun onInflateLayout(): Int {
         // 显示tab
-        activity.wd_tab.visibility = View.VISIBLE 
+        activity.wd_tab.visibility = View.VISIBLE
         return R.layout.frag_setting
     }
 
@@ -20,6 +20,11 @@ class Frag_setting:RootFrag() {
     }
 
     override fun onBackPresss(): Boolean {
-        return true
+        return false
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (hidden) activity.wd_tab.visibility = View.GONE
     }
 }

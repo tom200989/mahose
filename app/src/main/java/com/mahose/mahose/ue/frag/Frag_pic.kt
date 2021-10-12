@@ -20,6 +20,11 @@ class Frag_pic:RootFrag() {
     }
 
     override fun onBackPresss(): Boolean {
-        return true
+        return false
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (hidden) activity.wd_tab.visibility = View.GONE
     }
 }
