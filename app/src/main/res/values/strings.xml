@@ -8,4 +8,6 @@
     <string name="if_you_want_to_use_app">If you want to use the function of the app, please agree to the permission application first</string>
     <string name="version_will_be_done">Version download will be done\nApp will restart and re-install</string>
     <string name="current_upgrade_error">Current upgrade error\nplease restart app</string>
+    <string name="it_is_detected_new_version">It is detected that the latest version of the app has been released. For your better experience, please click download</string>
+    <string name="new_version">New Version</string>
 </resources>

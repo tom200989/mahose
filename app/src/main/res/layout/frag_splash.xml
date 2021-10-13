@@ -18,48 +18,20 @@
 
     <!-- 版权 -->
     <TextView
-        android:gravity="center"
         android:id="@+id/tv_copyright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text="@string/tv_copyright"
         app:layout_textSizePercent="1.5%sh" />
 
-    <!-- 升级信息 -->
-    <com.hiber.tools.layout.PercentLinearLayout
-        android:id="@+id/ll_upgrade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/iv_icon"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical"
+    <!-- 升级提示 -->
+    <com.mahose.mahose.widget.TipWidget
         android:visibility="gone"
-        app:layout_marginTopPercent="10%sh"
-        app:layout_widthPercent="70%sw">
-
-        <TextView
-            android:gravity="center"
-            android:id="@+id/tv_upgrade_des"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/loading_the_new_version"
-            android:textColor="@color/black_color"
-            app:layout_textSizePercent="2%sh" />
-
-        <TextView
-            android:gravity="center"
-            android:id="@+id/tv_upgrade_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="0%"
-            android:textColor="@color/black_color"
-            app:layout_marginTopPercent="5%sh"
-            app:layout_textSizePercent="3%sh" />
-
-    </com.hiber.tools.layout.PercentLinearLayout>
+        android:id="@+id/wd_upgrade_tip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </com.hiber.tools.layout.PercentRelativeLayout>

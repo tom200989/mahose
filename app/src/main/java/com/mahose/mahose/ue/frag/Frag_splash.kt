@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Process
 import android.view.View
-import butterknife.OnClick
 import com.hiber.bean.PermissBean
 import com.hiber.bean.StringBean
 import com.hiber.hiber.RootFrag
@@ -15,6 +14,7 @@ import com.mahose.mahose.R
 import com.mahose.mahose.helper.UpdateHelper
 import com.mahose.mahose.widget.TabWidget
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.frag_splash.*
 
 
 /*
@@ -68,13 +68,14 @@ class Frag_splash : RootFrag() {
         // 检查更新 (第一个页面中有跳转, 需要用handler包裹, 否则视图可能未加载完毕出现白屏)
         Handler(Looper.getMainLooper()).postDelayed({ toCheckVersion() }, 200)
         // 设置tab点击
-        setTabClick()
+        setListener()
     }
 
     /**
-     * 设置tab点击
+     * 设置点击事件
      */
-    private fun setTabClick() {
+    private fun setListener() {
+        /* TAB点击 */
         activity.wd_tab.onTabClickListener = { enum ->
             Logma.i(TAG, "正在切换 ${enum.name} 页")
             when (enum) {
@@ -85,6 +86,12 @@ class Frag_splash : RootFrag() {
                 // 跳转到设置页
                 TabWidget.TAB_ENUM.SETTING -> toFrag(javaClass, Frag_setting::class.java, null, true, 0)
             }
+        }
+
+        /* 升级弹窗 */
+        wd_upgrade_tip.onTipClickOkListener = {
+            Logma.vsd(TAG, "onTipClickOkListener() -> 打开google play app页面, 让用户自己去下载安装")
+            UpdateHelper().openUrl(activity)
         }
     }
 
@@ -110,8 +117,8 @@ class Frag_splash : RootFrag() {
         updateHelper.onCheckEndListener = { isneed ->
             // 如需升级 - 弹出视图直接联网升级
             if (isneed) {
-                Logma.vsd(TAG, "toCheckVersion() -> 打开google play app页面, 让用户自己去下载安装")
-                updateHelper.openUrl(activity)
+                Logma.vsd(TAG, "toCheckVersion() -> 显示升级弹窗")
+                wd_upgrade_tip.visibility = View.VISIBLE
 
             } else {// 不需要升级的 - 直接跳转到主页
                 Logma.vsd(TAG, "toCheckVersion() -> 跳转到主页")

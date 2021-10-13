@@ -20,8 +20,6 @@ class MainActivity : RootMAActivity() {
         Frag_test::class.java // 测试
     )
 
-    var wd_tab: TabWidget? = null
-
     override fun initProperty(): RootProperty {
         val property = RootProperty()
         property.colorStatusBar = R.color.theme_color
@@ -35,7 +33,7 @@ class MainActivity : RootMAActivity() {
     }
 
     override fun onNexts() {
-        wd_tab = findViewById(R.id.wd_tab)
+
     }
 
     override fun onBackClick(): Boolean {

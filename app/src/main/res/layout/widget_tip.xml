@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.1"
+        android:background="@color/black_color" />
+
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_dialog"
+        app:layout_marginBottomPercent="15%sh"
+        app:layout_widthPercent="80%sw">
+
+        <TextView
+            android:id="@+id/tv_update_titlle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/new_version"
+            android:textColor="@color/black_color"
+            android:textStyle="bold"
+            app:layout_marginTopPercent="2%sh"
+            app:layout_textSizePercent="2.5%sh" />
+
+        <TextView
+            android:id="@+id/tv_update_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_update_titlle"
+            android:gravity="center"
+            android:text="@string/it_is_detected_new_version"
+            android:textColor="@color/black_color"
+            app:layout_marginPercent="2%sw"
+            app:layout_textSizePercent="2%sh" />
+
+        <Button
+            android:id="@+id/bt_update_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_update_tip"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_selector"
+            android:text="@string/ok"
+            android:textColor="@color/white_color"
+            app:layout_heightPercent="5%sh"
+            app:layout_marginBottomPercent="2%sh"
+            app:layout_marginTopPercent="2%sh" />
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+</com.hiber.tools.layout.PercentRelativeLayout>
