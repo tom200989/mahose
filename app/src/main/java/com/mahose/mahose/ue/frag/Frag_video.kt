@@ -13,13 +13,12 @@ class Frag_video : RootFrag() {
     override fun onInflateLayout(): Int {
         // 显示tab
         activity.wd_tab.visibility = View.VISIBLE
+        activity.wd_title.visibility = View.VISIBLE
         return R.layout.frag_video
     }
 
     override fun onNexts(p0: Any?, p1: View?, p2: String?) {
-        tv_home.setOnClickListener {
-            toFrag(javaClass, Frag_test::class.java, null, true, 0)
-        }
+
     }
 
     override fun onBackPresss(): Boolean {
@@ -29,6 +28,7 @@ class Frag_video : RootFrag() {
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (hidden) activity.wd_tab.visibility = View.GONE
+        if (hidden) activity.wd_title.visibility = View.GONE
     }
 
 }

@@ -53,7 +53,7 @@ class TabWidget : RelativeLayout {
     /**
      * 辅助切换
      */
-    enum class TAB_ENUM(i: Int) {
-        VIDEO(0), PIC(1), SETTING(2)
+    enum class TAB_ENUM {
+        VIDEO, PIC, SETTING
     }
 }

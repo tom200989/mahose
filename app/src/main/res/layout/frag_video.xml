@@ -7,14 +7,6 @@
     android:background="@color/white_color"
     tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
 
-
-    <TextView
-        android:id="@+id/tv_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="这里是主页"
-        app:layout_textSizePercent="2%sh" />
-    
+   
 
 </com.hiber.tools.layout.PercentRelativeLayout>

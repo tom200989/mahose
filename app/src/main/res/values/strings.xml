@@ -10,4 +10,6 @@
     <string name="current_upgrade_error">Current upgrade error\nplease restart app</string>
     <string name="it_is_detected_new_version">It is detected that the latest version of the app has been released. For your better experience, please click download</string>
     <string name="new_version">New Version</string>
+    <string name="video">Video</string>
+    <string name="gallary">Gallary</string>
 </resources>

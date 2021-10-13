@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ue.activity.MainActivity">
 
+    <!-- 标题栏 -->
+    <com.mahose.mahose.widget.TitleWidget
+        android:id="@+id/wd_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_heightPercent="6%sh" />
+
+    <!-- 底部导航 -->
     <com.mahose.mahose.widget.TabWidget
         android:id="@+id/wd_tab"
         android:layout_width="match_parent"
@@ -13,10 +22,12 @@
         android:layout_alignParentBottom="true"
         android:visibility="gone" />
 
+    <!-- 内容区 -->
     <FrameLayout
         android:id="@+id/fl_contain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/wd_tab"/>
+        android:layout_above="@id/wd_tab"
+        android:layout_below="@id/wd_title" />
 
 </com.hiber.tools.layout.PercentRelativeLayout>

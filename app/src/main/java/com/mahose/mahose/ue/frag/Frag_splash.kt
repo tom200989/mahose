@@ -13,6 +13,7 @@ import com.logma.logma.tool.Logma
 import com.mahose.mahose.R
 import com.mahose.mahose.helper.UpdateHelper
 import com.mahose.mahose.widget.TabWidget
+import com.mahose.mahose.widget.TitleWidget
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.frag_splash.*
 
@@ -80,11 +81,31 @@ class Frag_splash : RootFrag() {
             Logma.i(TAG, "正在切换 ${enum.name} 页")
             when (enum) {
                 // 跳转到视频页
-                TabWidget.TAB_ENUM.VIDEO -> toFrag(javaClass, Frag_video::class.java, null, true, 0)
+                TabWidget.TAB_ENUM.VIDEO -> {
+                    toFrag(javaClass, Frag_video::class.java, null, true, 0)
+                    activity.wd_title.setTitle(getRootString(R.string.video))
+                }
                 // 跳转到图片页
-                TabWidget.TAB_ENUM.PIC -> toFrag(javaClass, Frag_pic::class.java, null, true, 0)
+                TabWidget.TAB_ENUM.PIC -> {
+                    toFrag(javaClass, Frag_pic::class.java, null, true, 0)
+                    activity.wd_title.setTitle(getRootString(R.string.gallary))
+                }
+
                 // 跳转到设置页
                 TabWidget.TAB_ENUM.SETTING -> toFrag(javaClass, Frag_setting::class.java, null, true, 0)
+            }
+        }
+
+        /* Title点击 */
+        activity.wd_title.OnTitleClickListener = { enum ->
+            Logma.i(TAG, "点击了 ${enum.name} 按钮")
+            when (enum) {
+                TitleWidget.TITLE_ENUM.SEARCH -> {
+                    // TODO: 2021/10/13  点击了搜索按钮
+                }
+                TitleWidget.TITLE_ENUM.COLLECT -> {
+                    // TODO: 2021/10/13  点击了收藏按钮
+                }
             }
         }
 
@@ -122,7 +143,7 @@ class Frag_splash : RootFrag() {
 
             } else {// 不需要升级的 - 直接跳转到主页
                 Logma.vsd(TAG, "toCheckVersion() -> 跳转到主页")
-                toFrag(javaClass, Frag_video::class.java, null, true, 2000)
+                toFrag(javaClass, Frag_video::class.java, null, true, 1000)
             }
         }
         updateHelper.check()
