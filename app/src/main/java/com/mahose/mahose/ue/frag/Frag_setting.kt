@@ -3,6 +3,7 @@ package com.mahose.mahose.ue.frag
 import android.view.View
 import com.hiber.hiber.RootFrag
 import com.mahose.mahose.R
+import com.mahose.mahose.ue.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /*

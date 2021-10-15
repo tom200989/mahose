@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.mahose.mahose.R
+import com.mahose.mahose.helper.ClickHelper
+import kotlinx.android.synthetic.main.widget_title.view.*
 
 /*
  * Created by PD on 2021/10/13.
@@ -14,6 +16,7 @@ import com.mahose.mahose.R
 class TitleWidget : RelativeLayout {
 
     var OnTitleClickListener: ((enum: TITLE_ENUM) -> Unit)? = null
+    var OnDoubleClickListener: (() -> Unit)? = null
 
     var iv_search: ImageView? = null
     var iv_collect: ImageView? = null
@@ -31,6 +34,8 @@ class TitleWidget : RelativeLayout {
         tv_title = inflate.findViewById(R.id.tv_title)
         iv_search?.setOnClickListener { OnTitleClickListener?.invoke(TITLE_ENUM.SEARCH) }
         iv_collect?.setOnClickListener { OnTitleClickListener?.invoke(TITLE_ENUM.COLLECT) }
+        ClickHelper(rl_title, 2) { OnDoubleClickListener?.invoke() }.click()// 双击
+
     }
 
     /**

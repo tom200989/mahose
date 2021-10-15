@@ -7,6 +7,5 @@
     android:background="@color/white_color"
     tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
 
-   
 
 </com.hiber.tools.layout.PercentRelativeLayout>

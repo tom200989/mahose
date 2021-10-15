@@ -5,13 +5,15 @@ import android.os.Bundle
 import com.hiber.bean.RootProperty
 import com.hiber.hiber.RootMAActivity
 import com.logma.logma.tool.Logma
-import com.mahose.mahose.BuildConfig
 import com.mahose.mahose.R
 import com.mahose.mahose.ue.frag.*
 import com.mahose.mahose.widget.TabWidget
 
 class MainActivity : RootMAActivity() {
 
+    // 用于记住在TAB切换时 - 切换后的页面类名
+    var currentTag: String = ""
+    // 页面数组
     var frags = arrayOf(
         Frag_splash::class.java, // 启动页
         Frag_video::class.java, // 视频页
@@ -28,7 +30,7 @@ class MainActivity : RootMAActivity() {
         property.fragmentClazzs = frags
         property.isFullScreen = true
         property.isSaveInstanceState = false
-        property.packageName = BuildConfig.APPLICATION_ID
+        property.packageName = "com.mahose.mahose"
         return property
     }
 
