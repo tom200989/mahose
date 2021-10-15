@@ -70,7 +70,7 @@ dependencies {
     //noinspection GradleCompatible
     api 'com.android.support:appcompat-v7:28.0.0'
     // 日志
-    api 'com.github.tom200989:logma:v0.1'
+    api 'com.github.tom200989:logma:v0.2'
     // 跑马灯
     api 'com.github.tom200989:p_runtext:runmav1.0.0'
 
