@@ -22,7 +22,7 @@ class Frag_pic : RootFrag() {
     override fun onNexts(p0: Any?, p1: View?, p2: String?) {
         /* 双击了标题区域 */
         activity.wd_title.OnDoubleClickListener = {
-            Logma.i("ma_double","双击了标题Pic区域")
+            // TODO: 10/15/2021  刷新数据
         }
     }
 

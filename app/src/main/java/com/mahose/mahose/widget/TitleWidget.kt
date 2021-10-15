@@ -42,7 +42,7 @@ class TitleWidget : RelativeLayout {
      * 设置标题
      */
     fun setTitle(title: String) {
-        tv_title?.setText(title)
+        tv_title?.text = title
     }
 
     /**
