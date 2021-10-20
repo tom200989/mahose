@@ -127,13 +127,14 @@ class OtherUtils {
             var bitmap_h = bitmap.height.toFloat()
             // 得到比例
             if (bitmap_w <= 0) return 1f
-            return screen_w / 2 / bitmap_w
+            return (screen_w / 2) / bitmap_w
         }
 
         /**
          * 比例缩放图片
          */
-        fun set_scale_bitmap(@FloatRange(from = 0.1) scale: Float, bitmap: Bitmap): Bitmap? {
+        fun set_scale_bitmap(scale: Float, bitmap: Bitmap): Bitmap? {
+            if (scale >= 1.0f) return bitmap // 如果不需要缩放 - 直接返回
             val byte_stream = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byte_stream)
             val inputStream: InputStream = ByteArrayInputStream(byte_stream.toByteArray())

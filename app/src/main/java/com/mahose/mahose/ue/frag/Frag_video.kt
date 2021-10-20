@@ -1,6 +1,7 @@
 package com.mahose.mahose.ue.frag
 
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.hiber.hiber.RootFrag
 import com.logma.logma.tool.Logma
@@ -72,7 +73,15 @@ class Frag_video : RootFrag() {
      */
     private fun initAdapter() {
         Logma.v(TAG, "initAdapter(): 初始化适配器")
-        rcv_video.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+        rcv_video.layoutManager = layoutManager
+        rcv_video.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                layoutManager.invalidateSpanAssignments()
+            }
+        })
         listAdapter = ListAdapter(activity, datas)
         rcv_video.adapter = listAdapter
     }

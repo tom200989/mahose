@@ -108,7 +108,15 @@ class Frag_pic : RootFrag() {
         rcv_pic_subTitle.adapter = subAdapter
 
         // 主内容
-        rcv_pic.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+        rcv_pic.layoutManager = layoutManager
+        rcv_pic.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                layoutManager.invalidateSpanAssignments()
+            }
+        })
         listAdapter = ListAdapter(activity, datas)
         rcv_pic.adapter = listAdapter
     }
