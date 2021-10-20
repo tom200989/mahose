@@ -7,5 +7,24 @@
     android:background="@color/white_color"
     tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
 
+    <!-- 列表 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 等待圈 -->
+    <com.mahose.mahose.widget.LoadWidget
+        android:id="@+id/wd_load_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- 出错 -->
+    <com.mahose.mahose.widget.ErrorWidget
+        android:id="@+id/wd_error_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </com.hiber.tools.layout.PercentRelativeLayout>

@@ -12,4 +12,11 @@
     <string name="new_version">New Version</string>
     <string name="video">Video</string>
     <string name="gallary">Gallary</string>
+    <string name="something_wrong">Something Wrong</string>
+    <string name="people_like">%s people like</string>
+    <string name="thumb_loading">Thumb is loading</string>
+    <string name="who_will_like">who will like</string>
+    <string name="unknown_error">Unknow Error</string>
+    <string name="try_again">Try again</string>
+    <string name="it_seem_that_problem">It seem that had problem\nPlease try again</string>
 </resources>

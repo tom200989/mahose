@@ -96,19 +96,6 @@ class Frag_splash : RootFrag() {
             }
         }
 
-        /* Title点击 */
-        activity.wd_title.OnTitleClickListener = { enum ->
-            Logma.i(TAG, "点击了 ${enum.name} 按钮")
-            when (enum) {
-                TitleWidget.TITLE_ENUM.SEARCH -> {
-                    // TODO: 2021/10/13  点击了搜索按钮
-                }
-                TitleWidget.TITLE_ENUM.COLLECT -> {
-                    // TODO: 2021/10/13  点击了收藏按钮
-                }
-            }
-        }
-
         /* 升级弹窗 */
         wd_upgrade_tip.onTipClickOkListener = {
             Logma.vsd(TAG, "onTipClickOkListener() -> 打开google play app页面, 让用户自己去下载安装")

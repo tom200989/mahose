@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <ImageView
+        android:id="@+id/iv_load_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.7"
+        android:background="@color/gray_color" />
+
+    <ImageView
+        android:layout_centerInParent="true"
+        android:src="@drawable/loading"
+        android:id="@+id/iv_load_circle"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+</com.hiber.tools.layout.PercentRelativeLayout>

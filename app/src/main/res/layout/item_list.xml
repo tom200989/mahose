@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <RelativeLayout
+        android:id="@+id/rl_item_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white_color"
+        app:layout_widthPercent="50%sw">
+
+        <!-- 图片布局 -->
+        <RelativeLayout
+            android:id="@+id/rl_item_iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 图片(竖图) -->
+            <ImageView
+                android:id="@+id/iv_item_list_verticle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/gray_color"
+                android:maxHeight="800dp"
+                android:minHeight="100dp"
+                android:scaleType="fitXY"
+                app:layout_heightPercent="100%sw" />
+
+            <!-- 默认背景 -->
+            <ImageView
+                android:id="@+id/iv_item_default"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="20dp"
+                android:src="@drawable/item_default"
+                android:visibility="gone" />
+
+            <!-- 喜欢 -->
+            <ImageView
+                android:id="@+id/iv_item_like"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="15dp"
+                android:src="@drawable/like"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <!-- 标题 -->
+        <TextView
+            android:id="@+id/tv_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_item_iv"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/thumb_loading"
+            android:textColor="@color/black_color"
+            android:textSize="16sp" />
+
+        <!-- 头像 -->
+        <ImageView
+            android:id="@+id/iv_item_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_above="@id/tv_item_title"
+            android:layout_margin="5dp"
+            android:src="@drawable/test_head" />
+
+        <!-- xxx人 喜欢 -->
+        <TextView
+            android:id="@+id/tv_item_people_like"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_title"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="@string/who_will_like"
+            android:textColor="@color/theme2_color"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</com.hiber.tools.layout.PercentRelativeLayout>

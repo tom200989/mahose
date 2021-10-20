@@ -6,7 +6,9 @@
 
     <!-- 自定义颜色 -->
     <color name="theme_color">#403B35</color>
+    <color name="theme2_color">#DAC0A1</color>
     <color name="btn_color">#e2b49d</color>
     <color name="black_color">#000000</color>
     <color name="white_color">#FFFFFF</color>
+    <color name="gray_color">#F3F3F3</color>
 </resources>
