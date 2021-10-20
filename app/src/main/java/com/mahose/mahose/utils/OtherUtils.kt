@@ -109,19 +109,9 @@ class OtherUtils {
          */
         fun get_scale_from_sreen(activity: Activity, bitmap: Bitmap): Float {
             // 获取屏幕宽高
-            var screen_w = 0
-            var screen_h = 0
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                val metrics = activity.windowManager.currentWindowMetrics
-                val insets = metrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
-                screen_w = metrics.bounds.width() - insets.left - insets.right
-                screen_h = metrics.bounds.height() - insets.top - insets.bottom
-            } else {
-                val metrics = DisplayMetrics()
-                activity.windowManager.defaultDisplay.getMetrics(metrics)
-                screen_w = metrics.widthPixels
-                screen_h = metrics.heightPixels
-            }
+            val swh = get_screen_wh(activity)
+            val screen_w = swh[0]
+            val screen_h = swh[1]
             // 获取图元宽高
             var bitmap_w = bitmap.width.toFloat()
             var bitmap_h = bitmap.height.toFloat()
@@ -170,6 +160,26 @@ class OtherUtils {
                 datas.add(subBean)
             }
             return datas
+        }
+
+        /**
+         * 获取屏幕宽高
+         */
+        fun get_screen_wh(activity: Activity): Array<Int> {
+            var screen_w = 0
+            var screen_h = 0
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                val metrics = activity.windowManager.currentWindowMetrics
+                val insets = metrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+                screen_w = metrics.bounds.width() - insets.left - insets.right
+                screen_h = metrics.bounds.height() - insets.top - insets.bottom
+            } else {
+                val metrics = DisplayMetrics()
+                activity.windowManager.defaultDisplay.getMetrics(metrics)
+                screen_w = metrics.widthPixels
+                screen_h = metrics.heightPixels
+            }
+            return arrayOf(screen_w, screen_h)
         }
     }
 

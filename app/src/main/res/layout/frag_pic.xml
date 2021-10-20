@@ -8,14 +8,14 @@
     tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
 
     <!-- 小标题列表 -->
-    <androidx.recyclerview.widget.RecyclerView
+    <com.mahose.mahose.widget.RcvSubTitleWidget
         android:id="@+id/rcv_pic_subTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
     <!-- 列表 -->
-    <androidx.recyclerview.widget.RecyclerView
+    <com.mahose.mahose.widget.RcvContentWidget
         android:id="@+id/rcv_pic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

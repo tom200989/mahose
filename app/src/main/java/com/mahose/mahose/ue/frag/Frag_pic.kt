@@ -27,6 +27,7 @@ class Frag_pic : RootFrag() {
     var datas: ArrayList<ListBean> = ArrayList()// 数据(主内容区)
     var subTitles: ArrayList<SubBean> = ArrayList()// 数据(副标题)
     var loadHelper: LoadHelper? = null
+    var subLayoutManager: LinearLayoutManager? = null
 
     override fun onInflateLayout(): Int {
         // 显示tab
@@ -102,7 +103,8 @@ class Frag_pic : RootFrag() {
     private fun initAdapter() {
         Logma.v(TAG, "initAdapter(): 初始化适配器")
         // 副标题
-        rcv_pic_subTitle.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        subLayoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        rcv_pic_subTitle.layoutManager = subLayoutManager
         subAdapter = SubAdapter(activity, subTitles)
         subAdapter?.onItemClickListener = { position, subTitle -> clickItem(position, subTitle) } // 点击item
         rcv_pic_subTitle.adapter = subAdapter
@@ -111,12 +113,6 @@ class Frag_pic : RootFrag() {
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
         rcv_pic.layoutManager = layoutManager
-        rcv_pic.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                layoutManager.invalidateSpanAssignments()
-            }
-        })
         listAdapter = ListAdapter(activity, datas)
         rcv_pic.adapter = listAdapter
     }
@@ -155,11 +151,14 @@ class Frag_pic : RootFrag() {
     private fun clickItem(position: Int, subTitle: String) {
         // 点击Item操作 - 根据类型加载不同的数据
         Logma.i(TAG, "clickItem(): 点击了 $subTitle 副标题")
+        // 设置item居于屏幕中间
+        rcv_pic_subTitle.smoothScrollToPosition(position)
+        // TODO: 10/20/2021  此处加入日期判断, 如果小于5分钟则不刷新(加入数据缓存机制)
         getContent(position)
     }
 
     override fun isReloadData(): Boolean {
-        // TODO: 10/20/2021  此处加入日期判断, 如果小于1个小时则不刷新
+        // TODO: 10/20/2021  此处加入日期判断, 如果小于5分钟则不刷新
         return super.isReloadData()
     }
 

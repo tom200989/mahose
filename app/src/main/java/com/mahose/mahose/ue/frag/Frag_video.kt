@@ -76,12 +76,6 @@ class Frag_video : RootFrag() {
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
         rcv_video.layoutManager = layoutManager
-        rcv_video.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                layoutManager.invalidateSpanAssignments()
-            }
-        })
         listAdapter = ListAdapter(activity, datas)
         rcv_video.adapter = listAdapter
     }
@@ -115,7 +109,7 @@ class Frag_video : RootFrag() {
     }
 
     override fun isReloadData(): Boolean {
-        // TODO: 10/20/2021  此处加入日期判断, 如果小于1个小时则不刷新
+        // TODO: 10/20/2021  此处加入日期判断, 如果小于5分钟则不刷新
         return super.isReloadData()
     }
 

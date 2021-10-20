@@ -19,6 +19,7 @@ class SubAdapter(context: Context, datas: ArrayList<SubBean>) : Adapter<SubHolde
     var context: Context? = null
     var datas: ArrayList<SubBean> = ArrayList()
     var onItemClickListener: ((position: Int, subTitle: String) -> Unit)? = null
+    var tmp_positon = 0
 
     init {
         this.datas = datas
@@ -46,7 +47,10 @@ class SubAdapter(context: Context, datas: ArrayList<SubBean>) : Adapter<SubHolde
             // 切换选中色
             setCheck(datas, position)
             // 回调
-            onItemClickListener?.invoke(position, subBean.subTitle ?: "...")
+            if (position != tmp_positon) {
+                onItemClickListener?.invoke(position, subBean.subTitle ?: "...")
+                tmp_positon = position
+            }
             // 刷新数据
             notifyDataSetChanged()
         }

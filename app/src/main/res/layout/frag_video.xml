@@ -8,7 +8,7 @@
     tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
 
     <!-- 列表 -->
-    <androidx.recyclerview.widget.RecyclerView
+    <com.mahose.mahose.widget.RcvContentWidget
         android:id="@+id/rcv_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
