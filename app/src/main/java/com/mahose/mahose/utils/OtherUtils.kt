@@ -13,6 +13,7 @@ import androidx.annotation.FloatRange
 import androidx.core.content.ContextCompat
 import com.mahose.mahose.R
 import com.mahose.mahose.bean.ListBean
+import com.mahose.mahose.bean.SubBean
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
@@ -25,11 +26,25 @@ import kotlin.random.Random
 class OtherUtils {
 
     companion object {
+        // 副标题资源
+        val titles = arrayOf("Cloths", "Scene", "Animal", "Food", "Drink", "Fruit", "Archicle")
+
+        // 图片资源
+        val pics = arrayListOf(
+            arrayOf(R.drawable.test0, R.drawable.test1), // 服饰
+            arrayOf(R.drawable.test2, R.drawable.test3), // 风景
+            arrayOf(R.drawable.test4, R.drawable.test5), // 宠物
+            arrayOf(R.drawable.test6, R.drawable.test7), // 美食
+            arrayOf(R.drawable.test8, R.drawable.test9), // 饮料
+            arrayOf(R.drawable.test10, R.drawable.test11), // 水果
+            arrayOf(R.drawable.test12, R.drawable.test13) // 建筑
+        )
 
         /**
-         * 获取模拟数据
+         * 获取主内容模拟数据
          */
-        fun getVirturalDatas(activity: Activity): ArrayList<ListBean> {
+        fun getVirturalContent(activity: Activity, position: Int): ArrayList<ListBean> {
+            val pic_arr = pics[position]
             val datas = ArrayList<ListBean>()
             for (idx in 0..20) {// TODO: 10/20/2021 当数据较大时, 出现线程挂起的现象(用多线程解决)
                 val listBean = ListBean()
@@ -37,7 +52,7 @@ class OtherUtils {
                 val mod = Random.nextInt(0, 50) % 2
                 if (mod == 0) {
                     // 主图
-                    val bitmap = get_scale_bitmap_by_drawable(activity, R.drawable.test0)
+                    val bitmap = get_scale_bitmap_by_drawable(activity, pic_arr[0])
                     listBean.thumb_width = bitmap.width.toFloat() // 宽高
                     listBean.thumb_height = bitmap.height.toFloat() // 宽高
                     listBean.main_bitmap = bitmap // 图元
@@ -46,7 +61,7 @@ class OtherUtils {
 
                 } else {
                     // 主图
-                    val bitmap = get_scale_bitmap_by_drawable(activity, R.drawable.test1)
+                    val bitmap = get_scale_bitmap_by_drawable(activity, pic_arr[1])
                     listBean.thumb_width = bitmap.width.toFloat() // 宽高
                     listBean.thumb_height = bitmap.height.toFloat() // 宽高
                     listBean.main_bitmap = bitmap // 图元
@@ -140,6 +155,20 @@ class OtherUtils {
             val outWidth = option.outWidth.toFloat()
             val outHeight = option.outHeight.toFloat()
             return arrayOf(outWidth, outHeight)
+        }
+
+        /**
+         * 获取副标题模拟数据
+         */
+        fun getVirtualSubTitles(): ArrayList<SubBean> {
+            val datas = ArrayList<SubBean>()
+            for (idx in titles.indices) {
+                val subBean = SubBean()
+                subBean.isCheck = idx == 0 // 默认第一个为true
+                subBean.subTitle = titles[idx]
+                datas.add(subBean)
+            }
+            return datas
         }
     }
 

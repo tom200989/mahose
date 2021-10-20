@@ -7,14 +7,32 @@
     android:background="@color/white_color"
     tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
 
-
-    <TextView
-        android:id="@+id/tv_home"
-        android:layout_width="wrap_content"
+    <!-- 小标题列表 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_pic_subTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="这里是图片页"
-        app:layout_textSizePercent="2%sh" />
-    
+        android:visibility="gone" />
+
+    <!-- 列表 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rcv_pic_subTitle" />
+
+    <!-- 等待圈 -->
+    <com.mahose.mahose.widget.LoadWidget
+        android:id="@+id/wd_load_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- 出错 -->
+    <com.mahose.mahose.widget.ErrorWidget
+        android:id="@+id/wd_error_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </com.hiber.tools.layout.PercentRelativeLayout>

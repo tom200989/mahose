@@ -3,7 +3,6 @@ package com.mahose.mahose.helper
 import android.app.Activity
 import com.mahose.mahose.R
 import com.mahose.mahose.utils.OtherUtils
-import com.p_runtext.p_runtext.utils.Other
 
 /*
  * Created by 54484 on 10/20/2021.
@@ -22,16 +21,35 @@ class LoadHelper(activity: Activity) {
     }
 
     /**
-     * 加载数据(模拟数据:保留该方法进行测试)
+     * 加载主内容数据(模拟数据:保留该方法进行测试)
      */
-    fun loadVirtual() {
-        // TODO: 10/20/2021 模拟数据 - 后期用网络请求取代
+    fun loadVirtualContent(position:Int) {
+        // TODO: 10/20/2021 模拟主内容数据 - 后期用网络请求取代
+        Thread {
+            try {
+                activity?.runOnUiThread { onLoadStartListener?.invoke() }
+                // 获取模拟数据 - todo 此处根据position去请求不同的链接
+                val virturalDatas = OtherUtils.getVirturalContent(activity!!,position)
+                activity?.runOnUiThread { if (virturalDatas.isNotEmpty()) onLoadSuccessListener?.invoke(virturalDatas) }
+            } catch (e: Exception) {
+                activity?.runOnUiThread { onLoadErrorListener?.invoke(e.message ?: activity!!.getString(R.string.unknown_error)) }
+            } finally {
+                activity?.runOnUiThread { onLoadFinishListener?.invoke() }
+            }
+        }.start()
+    }
+
+    /**
+     * 加载副标题数据(模拟数据:保留该方法进行测试)
+     */
+    fun loadVirtualSubTitle() {
+        // TODO: 10/20/2021 模拟副标题数据 - 后期用网络请求取代
         Thread {
             try {
                 activity?.runOnUiThread { onLoadStartListener?.invoke() }
                 // 获取模拟数据
-                val virturalDatas = OtherUtils.getVirturalDatas(activity!!)
-                activity?.runOnUiThread { if (virturalDatas.isNotEmpty()) onLoadSuccessListener?.invoke(virturalDatas) }
+                val virturalSubs = OtherUtils.getVirtualSubTitles()
+                activity?.runOnUiThread { if (virturalSubs.isNotEmpty()) onLoadSuccessListener?.invoke(virturalSubs) }
             } catch (e: Exception) {
                 activity?.runOnUiThread { onLoadErrorListener?.invoke(e.message ?: activity!!.getString(R.string.unknown_error)) }
             } finally {

@@ -46,15 +46,4 @@ class ListAdapter(context: Context, datas: ArrayList<ListBean>) : Adapter<ListHo
     override fun getItemCount(): Int {
         return if (datas.isEmpty()) 0 else datas.size
     }
-
-    /**
-     * 重新缩放
-     * @param iv 图片
-     * @param bw 图宽
-     * @param bh 图高
-     */
-    private fun setScale(iv: ImageView, bw: Int, bh: Int) {
-        // 获取屏幕宽高
-
-    }
 }

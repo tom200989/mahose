@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.frag_video.*
  */
 class Frag_video : RootFrag() {
     var TAG = javaClass.simpleName
-    var adapter: ListAdapter? = null
+    var listAdapter: ListAdapter? = null
     var datas: ArrayList<ListBean> = ArrayList()
     var loadHelper: LoadHelper? = null
 
@@ -48,22 +48,23 @@ class Frag_video : RootFrag() {
     private fun getDatas() {
         loadHelper = LoadHelper(activity)
         loadHelper?.onLoadStartListener = {
-            Logma.v(TAG, "getVirtualDatas(): 开始获取模拟数据")// 开始
+            Logma.v(TAG, "getDatas(): 开始获取模拟数据")// 开始
             wd_load_video.showVisible()
             wd_error_video.showGone()
         }
         loadHelper?.onLoadSuccessListener = {
-            Logma.i(TAG, "getVirtualDatas(): 获取成功")// 成功
-            adapter?.notifys(it as ArrayList<ListBean>)
+            Logma.i(TAG, "getDatas(): 获取成功")// 成功
+            datas = it as ArrayList<ListBean>
+            listAdapter?.notifys(datas) // 刷新数据
             wd_load_video.showGone()
             wd_error_video.showGone()
         }
         loadHelper?.onLoadErrorListener = { error ->// 失败
-            Logma.e(TAG, "getVirtualDatas(): 获取失败 = $error")
+            Logma.e(TAG, "getDatas(): 获取失败 = $error")
             wd_load_video.showGone()
             wd_error_video.showVisible()
         }
-        loadHelper?.loadVirtual()
+        loadHelper?.loadVirtualContent(0)
     }
 
     /**
@@ -72,8 +73,8 @@ class Frag_video : RootFrag() {
     private fun initAdapter() {
         Logma.v(TAG, "initAdapter(): 初始化适配器")
         rcv_video.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        adapter = ListAdapter(activity, datas)
-        rcv_video.adapter = adapter
+        listAdapter = ListAdapter(activity, datas)
+        rcv_video.adapter = listAdapter
     }
 
     /**
@@ -82,12 +83,12 @@ class Frag_video : RootFrag() {
     private fun initListener() {
         // 双击了标题区域
         activity.wd_title.OnDoubleClickListener = {
-            Logma.i(TAG, "双击了标题栏")
+            Logma.i(TAG, "initListener(): 双击了标题栏")
             getDatas()
         }
         // Title点击
         activity.wd_title.OnTitleClickListener = { enum ->
-            Logma.i(TAG, "点击了 ${enum.name} 按钮")
+            Logma.i(TAG, "initListener(): 点击了 ${enum.name} 按钮")
             when (enum) {
                 TitleWidget.TITLE_ENUM.SEARCH -> {
                     // TODO: 2021/10/13  点击了搜索按钮
@@ -99,9 +100,14 @@ class Frag_video : RootFrag() {
         }
         // 重试点击
         wd_error_video.onTryAaginListener = {
-            Logma.i(TAG, "点击了重试")
+            Logma.i(TAG, "initListener(): 点击了重试")
             getDatas()
         }
+    }
+
+    override fun isReloadData(): Boolean {
+        // TODO: 10/20/2021  此处加入日期判断, 如果小于1个小时则不刷新
+        return super.isReloadData()
     }
 
     override fun onBackPresss(): Boolean {

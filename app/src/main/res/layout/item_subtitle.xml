@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <TextView
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:id="@+id/tv_item_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="subtitle"
+        android:textColor="@color/dark_gray_color"
+        android:textSize="14sp" />
+
+</com.hiber.tools.layout.PercentRelativeLayout>
