@@ -47,6 +47,7 @@ class Frag_video : RootFrag() {
      * 获取数据
      */
     private fun getDatas() {
+        // TODO: 10/21/2021  加入时间进行判断 - 如果5分钟之内, 则不重新请求加载
         loadHelper = LoadHelper(activity)
         loadHelper?.onLoadStartListener = {
             Logma.v(TAG, "getDatas(): 开始获取模拟数据")// 开始
@@ -85,6 +86,7 @@ class Frag_video : RootFrag() {
     private fun initListener() {
         // 双击了标题区域
         activity.wd_title.OnDoubleClickListener = {
+            // TODO: 10/21/2021  加入防止频繁操作行为
             Logma.i(TAG, "initListener(): 双击了标题栏")
             getDatas()
         }

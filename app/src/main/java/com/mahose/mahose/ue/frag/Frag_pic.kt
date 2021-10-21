@@ -78,6 +78,7 @@ class Frag_pic : RootFrag() {
      * 获取主内容
      */
     private fun getContent(position: Int, data_enum: DATA_STATE) {
+        // TODO: 10/21/2021  加入时间进行判断 - 如果5分钟之内, 则不重新请求加载
         loadHelper = LoadHelper(activity)
         loadHelper?.onLoadStartListener = {
             Logma.v(TAG, "getDatas(): 开始获取模拟数据")// 开始
@@ -134,6 +135,7 @@ class Frag_pic : RootFrag() {
     private fun initListener() {
         // 双击了标题区域
         activity.wd_title.OnDoubleClickListener = {
+            // TODO: 10/21/2021  加入防止频繁操作行为
             Logma.i(TAG, "initListener(): 双击了标题栏")
             // 重新加载数据
             getContent(sub_position, DATA_STATE.INIT)
