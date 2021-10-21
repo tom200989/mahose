@@ -65,7 +65,7 @@ class SubAdapter(context: Context, datas: ArrayList<SubBean>) : Adapter<SubHolde
      * @param datas 原数据
      * @param position 当前选中索引
      */
-    private fun setCheck(datas: ArrayList<SubBean>, position: Int) {
+    fun setCheck(datas: ArrayList<SubBean>, position: Int) {
         for (idx in datas.indices) {
             datas[idx].isCheck = idx == position
         }

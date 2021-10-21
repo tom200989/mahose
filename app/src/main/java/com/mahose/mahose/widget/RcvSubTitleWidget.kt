@@ -28,6 +28,9 @@ class RcvSubTitleWidget : RecyclerView {
         // 获取rcv的中心
         val rcv_half_w = width / 2
         // 如果当前点击的item不在recycleview的中心点 - 则把滚动rcv以令当前item移动到该中心位置
-        if (layoutManager is LinearLayoutManager) (layoutManager as LinearLayoutManager).scrollToPositionWithOffset(position, rcv_half_w - itemWidth / 2)
+        if (layoutManager is LinearLayoutManager) {
+            val lineLayoutManager = layoutManager as LinearLayoutManager
+            lineLayoutManager.scrollToPositionWithOffset(position, rcv_half_w - itemWidth / 2)
+        }
     }
 }

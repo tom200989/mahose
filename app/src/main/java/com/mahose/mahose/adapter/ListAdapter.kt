@@ -35,9 +35,10 @@ class ListAdapter(context: Context, datas: ArrayList<ListBean>) : Adapter<ListHo
         return ListHolder(LayoutInflater.from(context).inflate(R.layout.item_list, parent, false))
     }
 
-    // 防止瀑布流重排序的做法 - 但还是有概率会出现重排序
+    // 4.防止瀑布流的做法 - 但还是有概率会出现重排序
     // (这一步一定要加, 且要在data集合中同时配置图片的大小便于计算)
     // 否则在rcv设置了invalidateSpanAssignments之后, 图片控件会变形
+    // https://www.jianshu.com/p/e441c0362364
     override fun getItemViewType(position: Int): Int {
         val listBean = datas[position]
         val tw = listBean.thumb_width

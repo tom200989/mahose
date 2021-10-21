@@ -55,7 +55,7 @@ class Frag_video : RootFrag() {
         }
         loadHelper?.onLoadSuccessListener = {
             Logma.i(TAG, "getDatas(): 获取成功")// 成功
-            datas = it as ArrayList<ListBean>
+            datas.addAll(it as ArrayList<ListBean>)
             listAdapter?.notifys(datas) // 刷新数据
             wd_load_video.showGone()
             wd_error_video.showGone()
@@ -73,9 +73,8 @@ class Frag_video : RootFrag() {
      */
     private fun initAdapter() {
         Logma.v(TAG, "initAdapter(): 初始化适配器")
-        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
-        rcv_video.layoutManager = layoutManager
+        rcv_video.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        rcv_video.onScrollToBottomListener = { getDatas() }// 滑到底了 - 加载更多数据
         listAdapter = ListAdapter(activity, datas)
         rcv_video.adapter = listAdapter
     }

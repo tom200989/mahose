@@ -28,6 +28,7 @@ class Frag_pic : RootFrag() {
     var subTitles: ArrayList<SubBean> = ArrayList()// 数据(副标题)
     var loadHelper: LoadHelper? = null
     var subLayoutManager: LinearLayoutManager? = null
+    var sub_position = 0 // 当前subtitle索引
 
     override fun onInflateLayout(): Int {
         // 显示tab
@@ -51,9 +52,10 @@ class Frag_pic : RootFrag() {
      */
     private fun getDatas() {
         // 获取副标题
+        // TODO: 10/21/2021  解决双击后数据错乱问题
         getSubTitle()
         // 获取主内容
-        getContent(0)
+        getContent(sub_position, DATA_STATE.INIT)
     }
 
     /**
@@ -75,7 +77,7 @@ class Frag_pic : RootFrag() {
     /**
      * 获取主内容
      */
-    private fun getContent(position: Int) {
+    private fun getContent(position: Int, data_enum: DATA_STATE) {
         loadHelper = LoadHelper(activity)
         loadHelper?.onLoadStartListener = {
             Logma.v(TAG, "getDatas(): 开始获取模拟数据")// 开始
@@ -84,7 +86,11 @@ class Frag_pic : RootFrag() {
         }
         loadHelper?.onLoadSuccessListener = {
             Logma.i(TAG, "getDatas(): 获取成功")// 成功
-            datas = it as ArrayList<ListBean>
+            if (data_enum == DATA_STATE.INIT) {
+                datas = it as ArrayList<ListBean>
+            } else {
+                datas.addAll(it as ArrayList<ListBean>)
+            }
             listAdapter?.notifys(datas) // 刷新数据
             wd_load_pic.showGone()
             wd_error_pic.showGone()
@@ -102,17 +108,22 @@ class Frag_pic : RootFrag() {
      */
     private fun initAdapter() {
         Logma.v(TAG, "initAdapter(): 初始化适配器")
+
         // 副标题
         subLayoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
         rcv_pic_subTitle.layoutManager = subLayoutManager
         subAdapter = SubAdapter(activity, subTitles)
-        subAdapter?.onItemClickListener = { position, subTitle -> clickItem(position, subTitle) } // 点击item
+        subAdapter?.onItemClickListener = { position, subTitle ->
+            this.sub_position = position
+            clickItem(position, subTitle)
+        } // 点击item
         rcv_pic_subTitle.adapter = subAdapter
 
         // 主内容
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
         rcv_pic.layoutManager = layoutManager
+        rcv_pic.onScrollToBottomListener = { getContent(sub_position, DATA_STATE.MORE) } // 上拉加载更多
         listAdapter = ListAdapter(activity, datas)
         rcv_pic.adapter = listAdapter
     }
@@ -124,7 +135,10 @@ class Frag_pic : RootFrag() {
         // 双击了标题区域
         activity.wd_title.OnDoubleClickListener = {
             Logma.i(TAG, "initListener(): 双击了标题栏")
-            getDatas()
+            // 重新加载数据
+            getContent(sub_position, DATA_STATE.INIT)
+            // 滚动到顶部
+            rcv_pic.smoothScrollToPosition(0)
         }
         // Title点击
         activity.wd_title.OnTitleClickListener = { enum ->
@@ -154,7 +168,7 @@ class Frag_pic : RootFrag() {
         // 设置item居于屏幕中间
         rcv_pic_subTitle.smoothScrollToPosition(position)
         // TODO: 10/20/2021  此处加入日期判断, 如果小于5分钟则不刷新(加入数据缓存机制)
-        getContent(position)
+        getContent(position, DATA_STATE.INIT)
     }
 
     override fun isReloadData(): Boolean {
@@ -171,5 +185,13 @@ class Frag_pic : RootFrag() {
         if (hidden) activity.wd_tab.visibility = View.GONE
         if (hidden) activity.wd_title.visibility = View.GONE
         if (hidden) (activity as MainActivity).currentTag = ""
+    }
+
+    /**
+     * 加载数据的类型
+     */
+    enum class DATA_STATE {
+        INIT,// 初始化
+        MORE // 加载更多
     }
 }
