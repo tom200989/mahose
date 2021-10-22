@@ -7,13 +7,14 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.os.Build
 import android.util.DisplayMetrics
+import android.view.View
 import android.view.WindowInsets
 import androidx.annotation.DrawableRes
-import androidx.annotation.FloatRange
 import androidx.core.content.ContextCompat
 import com.mahose.mahose.R
 import com.mahose.mahose.bean.ListBean
 import com.mahose.mahose.bean.SubBean
+import com.nineoldandroids.view.ViewHelper
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
@@ -180,6 +181,15 @@ class OtherUtils {
                 screen_h = metrics.heightPixels
             }
             return arrayOf(screen_w, screen_h)
+        }
+
+        /**
+         * 水平方向移动view
+         * @param view 要移动的对象
+         * @param distance 偏移距离
+         */
+        fun move_view_x(view: View, distance: Float) {
+            ViewHelper.setTranslationX(view, distance)
         }
     }
 

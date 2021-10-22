@@ -1,15 +1,26 @@
 package com.mahose.mahose.ue.frag
 
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.widget.FrameLayout
 import com.hiber.hiber.RootFrag
+import com.logma.logma.tool.Logma
 import com.mahose.mahose.R
-import com.mahose.mahose.ue.activity.MainActivity
+import com.mahose.mahose.utils.OtherUtils
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.frag_setting.*
+import kotlin.math.abs
 
 /*
  * Created by PD on 2021/10/9.
  */
 class Frag_setting : RootFrag() {
+
+    val TAG: String = javaClass.simpleName
+    var current_open = false // 当前左侧面板是否开启
+    var isPoping = false // 左侧面板是否正在开启
+
     override fun onInflateLayout(): Int {
         // 显示tab
         activity.wd_tab.visibility = View.VISIBLE
@@ -17,10 +28,70 @@ class Frag_setting : RootFrag() {
     }
 
     override fun onNexts(p0: Any?, p1: View?, p2: String?) {
-        TODO("Not yet implemented")
+        // 点击更多
+        rl_setting_more.setOnClickListener { popMenu() }
+        // 蒙版点击
+        iv_setting_mask.setOnClickListener { popMenu() }
+    }
+
+    /**
+     * 弹出左侧面板
+     */
+    private fun popMenu() {
+
+        Thread {
+            val offset = rl_setting_left.width.toFloat() // 左侧区宽
+            var tick = 0.0f // 左侧区计步初始值
+            val step = 6 // 左侧区步进
+
+            val al_max = 0.7f // 蒙版透明度最大值
+            var al_tick = 0.0f // 蒙版计步初始值
+            val al_del = 0.01f // 蒙版偏差
+            val al_step = al_max / (offset / step) // 蒙版步进
+
+            while (!isPoping) {
+                
+                Thread.sleep(1)
+                tick += step // 主区和侧区变化值
+                al_tick += al_step // 递进蒙版透明度变化值
+                
+                activity.runOnUiThread {
+                    // ----- 移动: 左侧、主区
+                    OtherUtils.move_view_x(rl_setting_left, if (!current_open) tick else offset - tick)
+                    OtherUtils.move_view_x(rl_setting_content, if (!current_open) tick else offset - tick)
+
+                    // ----- 蒙版透明度 + 大小 
+                    if (al_tick >= al_max - al_del) al_tick = al_max
+                    // 透明度
+                    if (!current_open) iv_setting_mask.visibility = View.VISIBLE
+                    iv_setting_mask.alpha = if (!current_open) al_tick else if (al_max - al_tick <= al_del) 0.0f else al_max - al_tick
+                    if (iv_setting_mask.alpha == 0.0f) iv_setting_mask.visibility = View.GONE
+                    // 蒙版偏距
+                    val mask_layoutParam = iv_setting_mask.layoutParams as FrameLayout.LayoutParams
+                    mask_layoutParam.marginStart = if (!current_open) tick.toInt() else (offset - tick).toInt()
+                    iv_setting_mask.layoutParams = mask_layoutParam
+                }
+
+                // 跳出循环
+                if (tick >= abs(offset)) isPoping = true
+            }
+
+            // 此处添加延迟100ms的原因是因为while循环结束前 - 上一次的runOnUi可能还在执行
+            // 如果此时马上current_open置反 - 就会导致蒙版闪烁
+            Handler(Looper.getMainLooper()).postDelayed({
+                current_open = !current_open
+                isPoping = false // 復位       
+            }, 100)
+
+        }.start()
     }
 
     override fun onBackPresss(): Boolean {
+        // 侧边板如果打开 - 则处理侧边板逻辑
+        if (current_open) {
+            popMenu()
+            return true
+        }
         return false
     }
 

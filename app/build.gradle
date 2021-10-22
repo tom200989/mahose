@@ -52,6 +52,7 @@ dependencies {
     api 'com.android.support:multidex:1.0.1'
     // butterknife
     api 'com.jakewharton:butterknife:10.2.3'
+    implementation files('libs\\ma_nine_android.jar')
     // butterknife
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
     // 本文核心架构包
@@ -73,6 +74,6 @@ dependencies {
     api 'com.github.tom200989:logma:v0.3'
     // 跑马灯
     api 'com.github.tom200989:p_runtext:runmav1.0.0'
-
-
+    // 圆形头像
+    api 'de.hdodenhof:circleimageview:3.1.0'
 }

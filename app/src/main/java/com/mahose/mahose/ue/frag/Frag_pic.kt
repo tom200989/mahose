@@ -16,6 +16,7 @@ import com.mahose.mahose.ue.activity.MainActivity
 import com.mahose.mahose.widget.TitleWidget
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.frag_pic.*
+import kotlinx.android.synthetic.main.frag_video.*
 
 /*
  * Created by PD on 2021/10/9.
@@ -83,7 +84,7 @@ class Frag_pic : RootFrag() {
         loadHelper?.onLoadStartListener = {
             Logma.v(TAG, "getDatas(): 开始获取模拟数据")// 开始
             wd_load_pic.showVisible()
-            wd_error_pic.showGone()
+            if (wd_error_video != null) wd_error_pic.showGone()
         }
         loadHelper?.onLoadSuccessListener = {
             Logma.i(TAG, "getDatas(): 获取成功")// 成功
@@ -93,12 +94,12 @@ class Frag_pic : RootFrag() {
                 datas.addAll(it as ArrayList<ListBean>)
             }
             listAdapter?.notifys(datas) // 刷新数据
-            wd_load_pic.showGone()
-            wd_error_pic.showGone()
+            if (wd_load_pic != null) wd_load_pic.showGone()
+            if (wd_error_video != null) wd_error_pic.showGone()
         }
         loadHelper?.onLoadErrorListener = { error ->// 失败
             Logma.e(TAG, "getDatas(): 获取失败 = $error")
-            wd_load_pic.showGone()
+            if (wd_load_pic != null) wd_load_pic.showGone()
             wd_error_pic.showVisible()
         }
         loadHelper?.loadVirtualContent(position)

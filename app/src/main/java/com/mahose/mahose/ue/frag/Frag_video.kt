@@ -52,18 +52,18 @@ class Frag_video : RootFrag() {
         loadHelper?.onLoadStartListener = {
             Logma.v(TAG, "getDatas(): 开始获取模拟数据")// 开始
             wd_load_video.showVisible()
-            wd_error_video.showGone()
+            if (wd_error_video != null) wd_error_video.showGone()
         }
         loadHelper?.onLoadSuccessListener = {
             Logma.i(TAG, "getDatas(): 获取成功")// 成功
             datas.addAll(it as ArrayList<ListBean>)
             listAdapter?.notifys(datas) // 刷新数据
-            wd_load_video.showGone()
-            wd_error_video.showGone()
+            if (wd_load_video != null) wd_load_video.showGone()
+            if (wd_error_video != null) wd_error_video.showGone()
         }
         loadHelper?.onLoadErrorListener = { error ->// 失败
             Logma.e(TAG, "getDatas(): 获取失败 = $error")
-            wd_load_video.showGone()
+            if (wd_load_video != null) wd_load_video.showGone()
             wd_error_video.showVisible()
         }
         loadHelper?.loadVirtualContent(0)
