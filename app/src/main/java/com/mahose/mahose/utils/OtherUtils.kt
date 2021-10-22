@@ -6,17 +6,27 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.os.Build
+import android.text.TextUtils
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowInsets
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.Animation
+import android.view.animation.ScaleAnimation
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.mahose.mahose.R
+import com.mahose.mahose.bean.Cons
 import com.mahose.mahose.bean.ListBean
 import com.mahose.mahose.bean.SubBean
+import com.mahose.mahose.bean.ThemeBean
 import com.nineoldandroids.view.ViewHelper
+import com.rootmastatic.rootmastatic.util.SPUtils
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.InputStream
 import kotlin.random.Random
 
@@ -190,6 +200,76 @@ class OtherUtils {
          */
         fun move_view_x(view: View, distance: Float) {
             ViewHelper.setTranslationX(view, distance)
+        }
+
+        /**
+         * 获取模拟主题
+         */
+        fun getVirtualTheme(context: Context): ArrayList<ThemeBean> {
+            val themes = ArrayList<ThemeBean>()
+            val drawables = arrayOf(R.drawable.test0, R.drawable.test5, R.drawable.test7, R.drawable.test9)
+            val titles = arrayOf("Default theme", "Sicene Theme", "Forrest Theme", "Dark Theme")
+            for (idx in drawables.indices) {
+                // 提取缩略图
+                val imageView = ImageView(context)
+                val layoutParams = LinearLayout.LayoutParams(-1, -1)
+                imageView.setImageDrawable(ContextCompat.getDrawable(context, drawables[idx]))
+                imageView.scaleType = ImageView.ScaleType.FIT_XY
+                imageView.layoutParams = layoutParams
+                // 封装
+                val themeBean = ThemeBean()
+                themeBean.path = context.getExternalFilesDir(null)?.absolutePath + File.separator + "/skin" + idx + ".apk"
+                themeBean.view = imageView
+                themeBean.title = titles[idx]
+                themeBean.index = idx
+                themes.add(themeBean)
+            }
+            return themes
+        }
+
+        /**
+         * 设置随机位移动画
+         */
+        fun setRandomTransAnim(view: View) {
+            // 随机一个缩放比例
+            val nextInt = Random.nextInt(3, 6)
+            val scaleRate: Float = nextInt.toFloat() / 10
+            // 随机一个时间
+            val randomTime = Random.nextInt(600, 1200)
+
+            val scalAnim = ScaleAnimation(1.0f, scaleRate, 1.0f, scaleRate, 1f, 1f)
+            scalAnim.duration = randomTime.toLong()
+            scalAnim.interpolator = AccelerateDecelerateInterpolator()
+            scalAnim.fillAfter = true
+            scalAnim.repeatCount = Animation.INFINITE
+            scalAnim.repeatMode = Animation.REVERSE
+            scalAnim.startNow()
+            view.animation = scalAnim
+            view.startAnimation(scalAnim)
+        }
+
+        /**
+         * 保存主题数据
+         */
+        fun saveThemeInfo(context: Context, themeBean: ThemeBean) {
+            val path = themeBean.path
+            val index = themeBean.index
+            val title = themeBean.title
+            SPUtils.get(context).putString(Cons.THEME_PATH, "$path#$index#$title")
+        }
+
+        /**
+         * 获取主题数据
+         */
+        fun getThemeInfo(context: Context): ThemeBean? {
+            val infos = SPUtils.get(context).getString(Cons.THEME_PATH, "")
+            if (TextUtils.isEmpty(infos)) return null
+            val split = infos!!.split("#")
+            val themeBean = ThemeBean()
+            themeBean.path = split[0]
+            themeBean.index = split[1].toInt()
+            themeBean.title = split[2]
+            return themeBean
         }
     }
 

@@ -31,6 +31,7 @@
         tools:replace="android:theme,android:allowBackup,android:appComponentFactory"
         tools:targetApi="n">
 
+        <!-- 主页 -->
         <activity
             android:name=".ue.activity.MainActivity"
             android:launchMode="standard"
@@ -39,6 +40,17 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="com.mahose.mahose.ue.activity.MainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 过渡页 -->
+        <activity
+            android:name=".ue.activity.TempActivity"
+            android:launchMode="standard"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="com.mahose.mahose.ue.activity.TempActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

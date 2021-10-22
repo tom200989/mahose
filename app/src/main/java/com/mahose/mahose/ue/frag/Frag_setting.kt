@@ -28,10 +28,51 @@ class Frag_setting : RootFrag() {
     }
 
     override fun onNexts(p0: Any?, p1: View?, p2: String?) {
+        // 初始化
+        initData()
+        // 点击事件
+        initListener()
+
+    }
+
+    /**
+     * 初始化数据
+     */
+    private fun initData() {
+        // TODO: 10/22/2021  获取版本号
+        // TODO: 10/22/2021  检查登录状态
+        // TODO: 10/22/2021  获取用户头像和用户名
+    }
+
+    /**
+     * 初始化点击
+     */
+    private fun initListener() {
         // 点击更多
         rl_setting_more.setOnClickListener { popMenu() }
         // 蒙版点击
         iv_setting_mask.setOnClickListener { popMenu() }
+        // 切换主题
+        rl_setting_theme.setOnClickListener {
+            // TODO: 10/22/2021  切换主题
+            toFrag(javaClass, Frag_theme::class.java, null, true, 0)
+        }
+        // 切换语言
+        rl_setting_language.setOnClickListener {
+            // TODO: 10/22/2021  切换语言
+        }
+        // 前往购物车
+        rl_setting_cart.setOnClickListener {
+            // TODO: 10/22/2021  前往购物车
+        }
+        // 前往客服
+        rl_setting_chat.setOnClickListener {
+            // TODO: 10/22/2021  前往客服
+        }
+        // 登录登出
+        rl_setting_login.setOnClickListener {
+            // TODO: 10/22/2021  登录登出
+        }
     }
 
     /**
@@ -50,11 +91,11 @@ class Frag_setting : RootFrag() {
             val al_step = al_max / (offset / step) // 蒙版步进
 
             while (!isPoping) {
-                
+
                 Thread.sleep(1)
                 tick += step // 主区和侧区变化值
                 al_tick += al_step // 递进蒙版透明度变化值
-                
+
                 activity.runOnUiThread {
                     // ----- 移动: 左侧、主区
                     OtherUtils.move_view_x(rl_setting_left, if (!current_open) tick else offset - tick)

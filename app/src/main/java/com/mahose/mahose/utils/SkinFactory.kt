@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.content.res.AssetManager
 import android.content.res.Resources
 import android.os.Environment
+import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -21,9 +22,15 @@ open class SkinFactory : LayoutInflater.Factory2 {
     // private var skinPath: String = "/data/data/com.ktapp.ktapp/skin/skin-debug.apk" // 皮肤包地址(固定)
     private var skinPath: String? = null
 
-    constructor(app: Application) {
+    /**
+     * @param path皮肤APK路径
+     */
+    constructor(app: Application, path: String) {
         this.app = app
-        skinPath = app.getExternalFilesDir(null)?.absolutePath + File.separator + "/skin.apk"
+        skinPath = path
+        // 非空判断
+        if (TextUtils.isEmpty(skinPath)) return
+        if (!File(skinPath!!).exists()) return
         // 重置: 每一个Activity/Fragment初始化时都把上一个view的属性记录重置
         SkinUtils.skinMap.clear()
         // 得到新皮肤包包名

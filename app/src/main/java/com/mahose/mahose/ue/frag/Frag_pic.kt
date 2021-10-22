@@ -53,7 +53,6 @@ class Frag_pic : RootFrag() {
      */
     private fun getDatas() {
         // 获取副标题
-        // TODO: 10/21/2021  解决双击后数据错乱问题
         getSubTitle()
         // 获取主内容
         getContent(sub_position, DATA_STATE.INIT)

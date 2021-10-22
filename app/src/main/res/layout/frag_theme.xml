@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <!-- 头部 -->
+    <ImageView
+        android:id="@+id/iv_theme_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/setting_bg" />
+
+    <!-- 回退建 -->
+    <RelativeLayout
+        android:id="@+id/rl_theme_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/back" />
+
+    </RelativeLayout>
+
+    <!-- 确定 -->
+    <Button
+        android:id="@+id/bt_theme_confirm"
+        android:layout_width="216dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bt_theme_selector"
+        android:text="Confirm"
+        android:textAllCaps="false"
+        android:textColor="@color/white_color"
+        android:textSize="16sp" />
+
+    <!-- 展示区 -->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_theme"
+        android:layout_width="256dp"
+        android:layout_height="453dp"
+        android:layout_above="@id/bt_theme_confirm"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp" />
+
+    <!-- 主题文本 -->
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/tv_theme_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/vp_theme"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/default_theme"
+        android:textColor="@color/theme_color"
+        android:textSize="18sp" />
+
+</com.hiber.tools.layout.PercentRelativeLayout>
