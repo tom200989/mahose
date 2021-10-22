@@ -2,8 +2,10 @@ package com.mahose.mahose.ue.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.LayoutInflaterCompat
 import com.hiber.bean.RootProperty
 import com.hiber.hiber.RootMAActivity
+import com.ktapp.skin.SkinFactory
 import com.logma.logma.tool.Logma
 import com.mahose.mahose.R
 import com.mahose.mahose.ue.frag.*
@@ -22,6 +24,11 @@ class MainActivity : RootMAActivity() {
         Frag_test::class.java // 测试
     )
 
+    override fun beforeAllFirst() {
+        // 加载皮肤插件 todo
+        // LayoutInflaterCompat.setFactory2(layoutInflater, SkinFactory(application))
+    }
+    
     override fun initProperty(): RootProperty {
         val property = RootProperty()
         property.colorStatusBar = R.color.theme_color
