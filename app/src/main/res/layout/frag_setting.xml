@@ -68,10 +68,10 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/iv_setting_head"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bt_setting_selector">
+            android:background="@drawable/bt_setting_selector"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
 
             <ImageView
                 android:id="@+id/iv_setting_cart"
@@ -99,9 +99,9 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/rl_setting_cart"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bt_setting_selector">
+            android:background="@drawable/bt_setting_selector"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
 
             <ImageView
                 android:id="@+id/iv_setting_chat"
@@ -129,9 +129,9 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/rl_setting_chat"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bt_setting_selector">
+            android:background="@drawable/bt_setting_selector"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
 
             <ImageView
                 android:id="@+id/iv_setting_login"
@@ -258,12 +258,12 @@
 
         <!-- 隐私条款 -->
         <TextView
-            android:layout_marginBottom="10dp"
             android:id="@+id/tv_setting_privacy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
             android:text="@string/privacy_statement"
             android:textColor="@color/theme2_color"
             android:textSize="12sp" />

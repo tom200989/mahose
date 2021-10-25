@@ -54,12 +54,11 @@ class Frag_setting : RootFrag() {
         iv_setting_mask.setOnClickListener { popMenu() }
         // 切换主题
         rl_setting_theme.setOnClickListener {
-            // TODO: 10/22/2021  切换主题
             toFrag(javaClass, Frag_theme::class.java, null, true, 0)
         }
         // 切换语言
         rl_setting_language.setOnClickListener {
-            // TODO: 10/22/2021  切换语言
+            toFrag(javaClass, Frag_language::class.java, null, true, 0)
         }
         // 前往购物车
         rl_setting_cart.setOnClickListener {
