@@ -35,12 +35,15 @@ class Frag_video : RootFrag() {
     }
 
     override fun onNexts(p0: Any?, p1: View?, p2: String?) {
-        // 初始化点击
-        initListener()
-        // 初始化列表
-        initAdapter()
-        // 加载数据 (要放在所有的控件初始化最后 - 未来可以作为网络加载完成前的默认数据)
-        getDatas()
+        // 如果是搜索页面回退的 - 则不重新加载
+        if (!p2!!.contains(Frag_search::class.java.simpleName)) {
+            // 初始化点击
+            initListener()
+            // 初始化列表
+            initAdapter()
+            // 加载数据 (要放在所有的控件初始化最后 - 未来可以作为网络加载完成前的默认数据)
+            getDatas()
+        }
     }
 
     /**
@@ -122,9 +125,9 @@ class Frag_video : RootFrag() {
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if (hidden) activity.wd_tab.visibility = View.GONE
-        if (hidden) activity.wd_title.visibility = View.GONE
-        if (hidden) (activity as MainActivity).currentTag = ""
+        activity.wd_tab.visibility = if (hidden) View.GONE else View.VISIBLE
+        activity.wd_title.visibility = if (hidden) View.GONE else View.VISIBLE
+        (activity as MainActivity).currentTag = if (hidden) "" else javaClass.simpleName
     }
 
 }

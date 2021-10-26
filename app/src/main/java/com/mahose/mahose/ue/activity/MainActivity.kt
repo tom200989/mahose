@@ -7,6 +7,7 @@ import com.ktapp.skin.SkinFactory
 import com.mahose.mahose.R
 import com.mahose.mahose.ue.frag.*
 import com.mahose.mahose.utils.OtherUtils
+import com.rootmastatic.rootmastatic.util.SPUtils
 import java.io.File
 
 class MainActivity : RootMAActivity() {

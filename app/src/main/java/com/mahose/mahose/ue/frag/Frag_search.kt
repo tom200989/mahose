@@ -102,7 +102,8 @@ class Frag_search : RootFrag() {
 
     override fun onBackPresss(): Boolean {
         // 回退到Lastfrag
-        toFrag(javaClass, lastFrag, null, true, 0)
+        OtherUtils.setKeyboard(et_search, activity, false)
+        toFrag(javaClass, lastFrag, null, false, 0)
         return true
     }
 }
