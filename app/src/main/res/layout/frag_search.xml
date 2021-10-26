@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_color"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <!-- 顶部搜索 -->
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:id="@+id/rl_search_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <!-- 回退建 -->
+        <RelativeLayout
+            android:id="@+id/rl_search_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/back" />
+
+        </RelativeLayout>
+
+        <!-- 回退建 -->
+        <TextView
+            android:id="@+id/tv_search_go"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:text="@string/go"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <!-- 输入框 -->
+        <com.hiber.tools.layout.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="6dp"
+            android:layout_toStartOf="@id/tv_search_go"
+            android:layout_toEndOf="@id/rl_search_back"
+            android:background="@drawable/bg_search">
+
+            <ImageView
+                android:id="@+id/iv_search_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/search2" />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_toEndOf="@id/iv_search_icon"
+                android:background="@drawable/bg_search_edit"
+                android:hint="@string/id_name_title"
+                android:inputType="text"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:textColor="@color/white_color"
+                android:textColorHint="@color/dark_gray_color"
+                android:textSize="16sp" />
+
+        </com.hiber.tools.layout.PercentRelativeLayout>
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+    <!-- 历史搜索 -->
+    <TextView
+        android:id="@+id/tv_search_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_search_title"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/was_search"
+        android:textColor="@color/white_color"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- 历史记录布局 -->
+    <com.mahose.mahose.widget.FlowLayout2
+        android:id="@+id/wd_flow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_search_des"
+        android:layout_margin="15dp"
+        android:background="@color/theme_color" />
+
+</com.hiber.tools.layout.PercentRelativeLayout>

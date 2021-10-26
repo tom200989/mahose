@@ -28,4 +28,8 @@
     <string name="privacy_statement">Privacy statement</string>
     <string name="default_theme">Default Theme</string>
     <string name="the_topic_is_switching">The topic is switching. Please do not operate the app\nIt will restart automatically after theme switching</string>
+    <string name="go">Go!</string>
+    <string name="id_name_title">ID/Name/Title</string>
+    <string name="was_search">Was Search</string>
+    <string name="please_input_what_you_want">Please input what you want to search</string>
 </resources>

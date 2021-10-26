@@ -148,6 +148,7 @@ class Frag_pic : RootFrag() {
             when (enum) {
                 TitleWidget.TITLE_ENUM.SEARCH -> {
                     // TODO: 2021/10/13  点击了搜索按钮
+                    lastFrag = Frag_pic::class.java
                 }
                 TitleWidget.TITLE_ENUM.COLLECT -> {
                     // TODO: 2021/10/13  点击了收藏按钮

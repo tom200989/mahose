@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mahose.mahose.R
-import com.mahose.mahose.bean.Cons
 import com.mahose.mahose.bean.LanguageBean
-import com.rootmastatic.rootmastatic.util.SPUtils
 
 /*
  * Created by 54484 on 10/25/2021.

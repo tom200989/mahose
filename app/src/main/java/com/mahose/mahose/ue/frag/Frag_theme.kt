@@ -2,16 +2,13 @@ package com.mahose.mahose.ue.frag
 
 import android.text.TextUtils
 import android.view.View
-import androidx.viewpager.widget.ViewPager
 import com.hiber.hiber.RootFrag
 import com.mahose.mahose.R
 import com.mahose.mahose.adapter.ThemeAdapter
 import com.mahose.mahose.adapter.ThemeListener
-import com.mahose.mahose.bean.Cons
 import com.mahose.mahose.bean.ThemeBean
 import com.mahose.mahose.ue.activity.TempActivity
 import com.mahose.mahose.utils.OtherUtils
-import com.rootmastatic.rootmastatic.util.SPUtils
 import kotlinx.android.synthetic.main.frag_theme.*
 
 /*

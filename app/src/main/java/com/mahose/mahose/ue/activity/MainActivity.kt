@@ -1,19 +1,12 @@
 package com.mahose.mahose.ue.activity
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.core.view.LayoutInflaterCompat
 import com.hiber.bean.RootProperty
-import com.hiber.bean.SkipBean
 import com.hiber.hiber.RootMAActivity
 import com.ktapp.skin.SkinFactory
-import com.logma.logma.tool.Logma
 import com.mahose.mahose.R
-import com.mahose.mahose.bean.Cons
 import com.mahose.mahose.ue.frag.*
 import com.mahose.mahose.utils.OtherUtils
-import com.mahose.mahose.widget.TabWidget
-import com.rootmastatic.rootmastatic.util.SPUtils
 import java.io.File
 
 class MainActivity : RootMAActivity() {
@@ -27,6 +20,10 @@ class MainActivity : RootMAActivity() {
         Frag_video::class.java, // 视频页
         Frag_pic::class.java, // 图片页
         Frag_setting::class.java, // 设置页
+        Frag_language::class.java, // 语言页
+        Frag_theme::class.java, // 主题页
+        Frag_temp::class.java, // 切换主题临时页
+        Frag_search::class.java, // 搜索页
         Frag_test::class.java // 测试
     )
 

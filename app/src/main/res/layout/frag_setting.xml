@@ -160,7 +160,7 @@
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_marginStart="-200dp"
-        android:background="@color/dark_gray_color2">
+        android:background="@color/gray_color2">
 
         <!-- 头部 -->
         <ImageView
@@ -178,7 +178,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="220dp"
             android:layout_marginEnd="30dp"
-            android:background="@color/dark_gray_color2">
+            android:background="@color/gray_color2">
 
             <ImageView
                 android:id="@+id/iv_setting_theme"
@@ -208,7 +208,7 @@
             android:layout_below="@id/rl_setting_theme"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:background="@color/dark_gray_color2">
+            android:background="@color/gray_color2">
 
             <ImageView
                 android:id="@+id/iv_setting_language"

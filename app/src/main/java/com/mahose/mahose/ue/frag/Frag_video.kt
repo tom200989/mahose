@@ -96,6 +96,8 @@ class Frag_video : RootFrag() {
             when (enum) {
                 TitleWidget.TITLE_ENUM.SEARCH -> {
                     // TODO: 2021/10/13  点击了搜索按钮
+                    lastFrag = Frag_video::class.java
+                    toFrag(javaClass, Frag_search::class.java, null, true, 0)
                 }
                 TitleWidget.TITLE_ENUM.COLLECT -> {
                     // TODO: 2021/10/13  点击了收藏按钮

@@ -3,8 +3,7 @@ package com.mahose.mahose.app
 import android.text.TextUtils
 import com.hiber.hiber.language.LangHelper
 import com.hiber.hiber.language.RootApp
-import com.hiber.tools.ShareUtils
-import com.mahose.mahose.bean.Cons
+import com.mahose.mahose.bean.HoseCons
 import com.rootmastatic.rootmastatic.util.SPUtils
 
 /*
@@ -26,6 +25,6 @@ class MaHoseApp : RootApp() {
         val language = locale.language
         val country = locale.country
         // 如果没有指定地区, 则格式为: es-default, 否则es-MX (一般情况下即便是从系统取, 系统会自动带地区, 这里仅仅为防止其他情况)
-        SPUtils.get(this).putString(Cons.CURRENT_LANG, language + "-" + if (TextUtils.isEmpty(country)) "default" else country)
+        SPUtils.get(this).putString(HoseCons.CURRENT_LANG, language + "-" + if (TextUtils.isEmpty(country)) "default" else country)
     }
 }

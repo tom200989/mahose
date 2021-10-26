@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.Rect
 import android.os.Build
 import android.text.TextUtils
 import android.util.DisplayMetrics
@@ -13,12 +14,14 @@ import android.view.WindowInsets
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.mahose.mahose.R
-import com.mahose.mahose.bean.Cons
+import com.mahose.mahose.bean.HoseCons
 import com.mahose.mahose.bean.ListBean
 import com.mahose.mahose.bean.SubBean
 import com.mahose.mahose.bean.ThemeBean
@@ -28,6 +31,8 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.InputStream
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 
@@ -37,10 +42,45 @@ import kotlin.random.Random
 class OtherUtils {
 
     companion object {
-        // 副标题资源
+        // 副标题资源(模拟数据)
         val titles = arrayOf("Cloths", "Scene", "Animal", "Food", "Drink", "Fruit", "Archicle")
 
-        // 图片资源
+        // 查找历史(模拟数据)
+        var searchs: ArrayList<String> = arrayListOf(
+            "only",
+            "tease",
+            "panty",
+            "flex",
+            "dancer",
+            "this is a title",
+            "ko",
+            "mutableListOf",
+            "no had china jp compay",
+            "1"
+        )
+
+        // 隐/显 键盘 (kotlin写法)
+        fun setKeyboard(editText: EditText, activity: Activity, show: Boolean) {
+            // 隐藏
+            if (!show) {
+                val imm: InputMethodManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(activity.window.decorView.windowToken, 0)
+            } else {
+                // if (show) imm.showSoftInputFromInputMethod(activity.window.decorView.windowToken, 0) // 过期无效果
+                editText.requestFocus()
+                editText.isFocusable = true
+                editText.isFocusableInTouchMode = true
+                val timer = Timer()
+                timer.schedule(object : TimerTask() {
+                    override fun run() {
+                        val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED)
+                    }
+                }, 200)
+            }
+        }
+
+        // 图片资源(模拟数据)
         val pics = arrayListOf(
             arrayOf(R.drawable.test0, R.drawable.test1), // 服饰
             arrayOf(R.drawable.test2, R.drawable.test3), // 风景
@@ -255,14 +295,14 @@ class OtherUtils {
             val path = themeBean.path
             val index = themeBean.index
             val title = themeBean.title
-            SPUtils.get(context).putString(Cons.THEME_PATH, "$path#$index#$title")
+            SPUtils.get(context).putString(HoseCons.THEME_PATH, "$path#$index#$title")
         }
 
         /**
          * 获取主题数据
          */
         fun getThemeInfo(context: Context): ThemeBean? {
-            val infos = SPUtils.get(context).getString(Cons.THEME_PATH, "")
+            val infos = SPUtils.get(context).getString(HoseCons.THEME_PATH, "")
             if (TextUtils.isEmpty(infos)) return null
             val split = infos!!.split("#")
             val themeBean = ThemeBean()
