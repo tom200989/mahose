@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import com.hiber.hiber.RootFrag
 import com.logma.logma.tool.Logma
+import com.mahose.mahose.BuildConfig
 import com.mahose.mahose.R
 import com.mahose.mahose.utils.OtherUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,7 +40,8 @@ class Frag_setting : RootFrag() {
      * 初始化数据
      */
     private fun initData() {
-        // TODO: 10/22/2021  获取版本号
+        // 获取版本号
+        tv_setting_version.text = BuildConfig.VERSION_NAME
         // TODO: 10/22/2021  检查登录状态
         // TODO: 10/22/2021  获取用户头像和用户名
     }
@@ -59,6 +61,10 @@ class Frag_setting : RootFrag() {
         // 切换语言
         rl_setting_language.setOnClickListener {
             toFrag(javaClass, Frag_language::class.java, null, true, 0)
+        }
+        // 隐私条款
+        tv_setting_privacy.setOnClickListener {
+            toFrag(javaClass, Frag_privacy::class.java, null, true, 0)
         }
         // 前往购物车
         rl_setting_cart.setOnClickListener {

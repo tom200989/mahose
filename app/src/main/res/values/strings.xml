@@ -32,4 +32,5 @@
     <string name="id_name_title">ID/Name/Title</string>
     <string name="was_search">Was Search</string>
     <string name="please_input_what_you_want">Please input what you want to search</string>
+    <string name="privacy">Privacy</string>
 </resources>

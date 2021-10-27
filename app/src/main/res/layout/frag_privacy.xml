@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_color"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <RelativeLayout
+        android:id="@+id/rl_privacy_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/theme_color">
+
+        <!-- 回退 -->
+        <RelativeLayout
+            android:id="@+id/rl_privacy_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/back" />
+
+        </RelativeLayout>
+
+        <!-- 标题 -->
+        <TextView
+            android:id="@+id/tv_privacy_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/privacy"
+            android:textColor="@color/white_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <!-- 内容 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_privacy_title"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/tv_privacy_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="隐私条款内容" />
+
+    </ScrollView>
+
+</com.hiber.tools.layout.PercentRelativeLayout>
