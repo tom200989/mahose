@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <ImageView
+        android:id="@+id/iv_logout_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.1"
+        android:background="@color/black_color" />
+
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_dialog"
+        app:layout_widthPercent="80%sw">
+
+        <TextView
+            android:id="@+id/tv_logout_titlle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/logout"
+            android:textColor="@color/black_color"
+            android:textStyle="bold"
+            app:layout_marginTopPercent="2%sh"
+            app:layout_textSizePercent="2.5%sh" />
+
+        <TextView
+            android:id="@+id/tv_logout_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_logout_titlle"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:text="@string/do_u_want_to_logout"
+            android:textColor="@color/black_color"
+            app:layout_marginPercent="2%sw"
+            app:layout_textSizePercent="2%sh" />
+
+        <View
+            android:id="@+id/v_logout_split"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true" />
+
+        <Button
+            android:id="@+id/bt_logout_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_logout_tip"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@id/v_logout_split"
+            android:background="@drawable/btn_selector"
+            android:text="@string/i_want_to"
+            android:textAllCaps="false"
+            android:textColor="@color/white_color"
+            app:layout_heightPercent="5%sh"
+            app:layout_marginBottomPercent="2%sh"
+            app:layout_marginTopPercent="2%sh" />
+
+        <Button
+            android:id="@+id/bt_logout_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_logout_tip"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/v_logout_split"
+            android:background="@drawable/btn_logout_selector"
+            android:text="@string/no_thanks"
+            android:textAllCaps="false"
+            android:textColor="@color/dark_gray_color"
+            app:layout_heightPercent="5%sh"
+            app:layout_marginBottomPercent="2%sh"
+            app:layout_marginTopPercent="2%sh" />
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+</com.hiber.tools.layout.PercentRelativeLayout>

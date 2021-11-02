@@ -83,7 +83,7 @@ class Frag_pic : RootFrag() {
     private fun getContent(position: Int, data_enum: DATA_STATE) {
         // TODO: 10/21/2021  加入时间进行判断 - 如果5分钟之内, 则不重新请求加载
         loadHelper = LoadHelper(activity)
-        loadHelper?.onLoadStartListener = {
+        loadHelper?.onPrepareListener = {
             Logma.v(TAG, "getDatas(): 开始获取模拟数据")// 开始
             wd_load_pic.showVisible()
             if (wd_error_video != null) wd_error_pic.showGone()

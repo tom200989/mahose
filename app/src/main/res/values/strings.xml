@@ -33,4 +33,12 @@
     <string name="was_search">Was Search</string>
     <string name="please_input_what_you_want">Please input what you want to search</string>
     <string name="privacy">Privacy</string>
+    <string name="please_login_first">Please Login or Register first!</string>
+    <string name="to_login">To Login</string>
+    <string name="to_logout">To Logout</string>
+    <string name="to_registe">To Registe</string>
+    <string name="logout">Logout</string>
+    <string name="i_want_to">I want to</string>
+    <string name="do_u_want_to_logout">Do u want to logout?</string>
+    <string name="no_thanks">No,thanks</string>
 </resources>

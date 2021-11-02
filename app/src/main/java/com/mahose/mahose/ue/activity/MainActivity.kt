@@ -26,6 +26,8 @@ class MainActivity : RootMAActivity() {
         Frag_temp::class.java, // 切换主题临时页
         Frag_search::class.java, // 搜索页
         Frag_privacy::class.java, // 隐私页
+        Frag_cart::class.java, // 购物车页
+        Frag_chat::class.java, // 客服页
         Frag_test::class.java // 测试
     )
 

@@ -8,10 +8,13 @@ import com.hiber.hiber.RootFrag
 import com.logma.logma.tool.Logma
 import com.mahose.mahose.BuildConfig
 import com.mahose.mahose.R
+import com.mahose.mahose.helper.LoginHelper
 import com.mahose.mahose.utils.OtherUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.frag_setting.*
+import java.util.*
 import kotlin.math.abs
+import kotlin.reflect.KClass
 
 /*
  * Created by PD on 2021/10/9.
@@ -21,6 +24,8 @@ class Frag_setting : RootFrag() {
     val TAG: String = javaClass.simpleName
     var current_open = false // 当前左侧面板是否开启
     var isPoping = false // 左侧面板是否正在开启
+    var loginHelper: LoginHelper? = null
+    var enum: LoginHelper.LOGIN_ENUM? = null // 登录状态(登录\登出\未注册)
 
     override fun onInflateLayout(): Int {
         // 显示tab
@@ -42,8 +47,35 @@ class Frag_setting : RootFrag() {
     private fun initData() {
         // 获取版本号
         tv_setting_version.text = BuildConfig.VERSION_NAME
-        // TODO: 10/22/2021  检查登录状态
-        // TODO: 10/22/2021  获取用户头像和用户名
+        // 检查登录\登出\注册状态
+        getLoginState()
+    }
+
+    /**
+     * 检查登录\登出\注册状态
+     */
+    private fun getLoginState() {
+        loginHelper = LoginHelper()
+        loginHelper?.onPrepareListener = { wd_load_setting.showVisible() }
+        loginHelper?.onStateListener = { enum ->
+            this.enum = enum // 状态
+            when (enum) {
+                LoginHelper.LOGIN_ENUM.LOGIN -> {
+                    // TODO: 10/27/2021 获取头像 + 用户名
+                    tv_setting_login.text = getString(R.string.to_logout)
+                }
+                LoginHelper.LOGIN_ENUM.LOGOUT -> {
+                    // TODO: 10/27/2021  显示默认头像
+                    tv_setting_login.text = getString(R.string.to_login)
+                }
+                LoginHelper.LOGIN_ENUM.UNREGISTER -> {
+                    // TODO: 10/27/2021  显示默认头像
+                    tv_setting_login.text = getString(R.string.to_registe)
+                }
+            }
+        }
+        loginHelper?.onEndListener = { wd_load_setting.showGone() }
+        loginHelper?.getState()
     }
 
     /**
@@ -67,16 +99,36 @@ class Frag_setting : RootFrag() {
             toFrag(javaClass, Frag_privacy::class.java, null, true, 0)
         }
         // 前往购物车
-        rl_setting_cart.setOnClickListener {
-            // TODO: 10/22/2021  前往购物车
-        }
+        rl_setting_cart.setOnClickListener { toPage(Frag_cart::class.java) }
         // 前往客服
-        rl_setting_chat.setOnClickListener {
-            // TODO: 10/22/2021  前往客服
+        rl_setting_chat.setOnClickListener { toPage(Frag_chat::class.java) }
+        // 登出弹窗OK
+        wd_logout.onLogoutClickOkListener = {
+            // TODO: 11/2/2021  发起登出请求
         }
-        // 登录登出
+        // 登录登出注册
         rl_setting_login.setOnClickListener {
             // TODO: 10/22/2021  登录登出
+            when (enum) {
+                LoginHelper.LOGIN_ENUM.LOGIN -> wd_logout.visibility = View.VISIBLE
+                LoginHelper.LOGIN_ENUM.LOGOUT -> {
+                    // TODO: 11/2/2021  跳转到登录页面
+                }
+                LoginHelper.LOGIN_ENUM.UNREGISTER -> {
+                    // TODO: 11/2/2021  跳转到注册页面
+                }
+            }
+        }
+    }
+
+    /**
+     * 跳转页面
+     */
+    private fun toPage(clazz: Class<out RootFrag>) {
+        if (enum == LoginHelper.LOGIN_ENUM.LOGIN) {
+            toFrag(javaClass, clazz, null, true, 0)
+        } else {
+            toast(getString(R.string.please_login_first), 3000)
         }
     }
 
