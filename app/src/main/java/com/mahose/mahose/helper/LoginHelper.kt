@@ -15,7 +15,11 @@ class LoginHelper(activity: Activity) : BaseHelper() {
     var onLoginFailedListener: (() -> Unit)? = null // 登录失败
     var onLogoutSuccessListener: (() -> Unit)? = null // 登出成功
     var onLogoutFailedListener: (() -> Unit)? = null // 登出失败
-
+    var onGetVerifySuccess:(()-> Unit)?= null // 获取验证码成功
+    var onGetVerifyFailed:(()-> Unit)?= null // 获取验证码失败
+    var onRegisterSuccess:(()-> Unit)?= null // 注册成功
+    var onRegisterFailed:(()-> Unit)?= null // 注册失败
+    
     var activity: Activity? = null
 
     init {
@@ -68,6 +72,43 @@ class LoginHelper(activity: Activity) : BaseHelper() {
                     onLogoutSuccessListener?.invoke()
                 } else {
                     onLogoutFailedListener?.invoke()
+                }
+                onEndListener?.invoke()
+            }
+        }.startDelay(1000)
+    }
+
+    /**
+     * 获取验证码
+     */
+    fun getVerify(email: String){
+        val test_verify = true
+        onPrepareListener?.invoke()
+        object : TimerHelper(activity) {
+            override fun doSomething() {
+                if (test_verify) {
+                    onGetVerifySuccess?.invoke()
+                } else {
+                    onGetVerifyFailed?.invoke()
+                }
+                onEndListener?.invoke()
+            }
+        }.startDelay(1000)
+    }
+
+    /**
+     * 注册
+     */
+    fun register(email:String, username: String, password: String){
+        val test_register = true // 模拟注册状态
+        // TODO: 11/4/2021  注册请求
+        onPrepareListener?.invoke()
+        object : TimerHelper(activity) {
+            override fun doSomething() {
+                if (test_register) {
+                    onRegisterSuccess?.invoke()
+                } else {
+                    onRegisterFailed?.invoke()
                 }
                 onEndListener?.invoke()
             }

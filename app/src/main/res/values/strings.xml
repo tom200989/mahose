@@ -56,4 +56,15 @@
     <string name="type_password">Type password</string>
     <string name="retype_password">Re-type password</string>
     <string name="already_have_an_account">Aleady have an account?</string>
+    <string name="email_is_empty">Email is empty</string>
+    <string name="re_password_is_empty">Re-password is empty</string>
+    <string name="register_success">Registe success</string>
+    <string name="register_failed">Registe Failed\nPlease try again</string>
+    <string name="sign_up">Sign up</string>
+    <string name="verify">Verify</string>
+    <string name="get">Get</string>
+    <string name="verify_code_is_empty">Verify code is empty</string>
+    <string name="get_verify_success">Get verify code success, please check your mailbox</string>
+    <string name="get_verify_failed">Get verify code failed, please try again after 5 min</string>
+    <string name="twice_password_is_not_same">twice password is not same</string>
 </resources>

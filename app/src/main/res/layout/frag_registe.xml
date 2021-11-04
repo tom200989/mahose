@@ -1,170 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.hiber.tools.layout.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/theme2_color"
     android:orientation="vertical"
     tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
 
-    <!-- 上部分 -->
-    <com.hiber.tools.layout.PercentLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:background="@drawable/bg_register"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tv_register_mahose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:text="@string/app_name"
-            android:textColor="@color/white_color"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:text="@string/hello"
-            android:textColor="@color/theme2_color"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="50dp"
-            android:text="@string/welcome_to_planet"
-            android:textColor="@color/white_color"
-            android:textSize="18sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal|bottom"
-            android:text="@string/created_account"
-            android:textColor="@color/white_color"
-            android:textSize="24sp" />
-
-    </com.hiber.tools.layout.PercentLinearLayout>
-
-    <!-- 下部分 -->
-    <com.hiber.tools.layout.PercentLinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/theme2_color"
-        android:orientation="vertical">
+        android:fadeScrollbars="false"
+        android:fadingEdge="none"
+        android:scrollbars="none">
 
-        <!-- 邮箱 -->
-        <EditText
-            android:id="@+id/et_register_email"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/bg_edit_register"
-            android:gravity="center"
-            android:hint="@string/your_email"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:textColor="@color/white_color"
-            android:textColorHint="@color/white_color"
-            android:textSize="18sp" />
-
-        <!-- 用户名 -->
-        <EditText
-            android:id="@+id/et_register_username"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/bg_edit_register"
-            android:gravity="center"
-            android:hint="@string/nick_name"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:textColor="@color/white_color"
-            android:textColorHint="@color/white_color"
-            android:textSize="18sp" />
-
-        <!-- 密码 -->
-        <EditText
-            android:id="@+id/et_register_password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/bg_edit_register"
-            android:gravity="center"
-            android:hint="@string/type_password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:textColor="@color/white_color"
-            android:textColorHint="@color/white_color"
-            android:textSize="18sp" />
-
-        <!-- 确认密码 -->
-        <EditText
-            android:id="@+id/et_register_repassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/bg_edit_register"
-            android:gravity="center"
-            android:hint="@string/retype_password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:textColor="@color/white_color"
-            android:textColorHint="@color/white_color"
-            android:textSize="18sp" />
-
-        <!-- 注册按钮 -->
-        <Button
-            android:id="@+id/bt_register"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/bg_register_selector"
-            android:gravity="center"
-            android:text="Sign up"
-            android:textAllCaps="false"
-            android:textColor="@color/theme2_color"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <!-- 已有账户 -->
-        <TextView
-            android:id="@+id/tv_register_had_account"
+        <com.hiber.tools.layout.PercentLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="40dp"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="@string/already_have_an_account"
-            android:textColor="@color/white_color"
-            android:textSize="18sp" />
+            android:orientation="vertical">
+            <!-- 上部分 -->
+            <com.hiber.tools.layout.PercentLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="@drawable/bg_register"
+                android:orientation="vertical">
 
-    </com.hiber.tools.layout.PercentLinearLayout>
+                <TextView
+                    android:id="@+id/tv_register_mahose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white_color"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-</com.hiber.tools.layout.PercentLinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:text="@string/hello"
+                    android:textColor="@color/theme2_color"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="50dp"
+                    android:text="@string/welcome_to_planet"
+                    android:textColor="@color/white_color"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|bottom"
+                    android:text="@string/created_account"
+                    android:textColor="@color/white_color"
+                    android:textSize="20sp" />
+
+            </com.hiber.tools.layout.PercentLinearLayout>
+
+            <!-- 下部分 -->
+            <com.hiber.tools.layout.PercentLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/theme2_color"
+                android:orientation="vertical">
+
+                <!-- 邮箱 -->
+                <EditText
+                    android:id="@+id/et_register_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/bg_edit_register"
+                    android:gravity="center"
+                    android:hint="@string/your_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:textColor="@color/white_color"
+                    android:textColorHint="@color/white_color"
+                    android:textSize="16sp" />
+
+                <!-- 验证码 -->
+                <com.hiber.tools.layout.PercentLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="40dp"
+                    android:orientation="horizontal">
+
+                    <!-- 验证码 -->
+                    <EditText
+                        android:id="@+id/et_register_verify_code"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_edit_register"
+                        android:gravity="center"
+                        android:hint="email code"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:textColor="@color/white_color"
+                        android:textColorHint="@color/white_color"
+                        android:textSize="16sp" />
+
+                    <!-- 注册按钮 -->
+                    <Button
+                        android:id="@+id/bt_register_get_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/bg_register_selector"
+                        android:gravity="center"
+                        android:text="@string/get"
+                        android:textAllCaps="false"
+                        android:textColor="@color/theme2_color"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </com.hiber.tools.layout.PercentLinearLayout>
+
+                <!-- 用户名 -->
+                <EditText
+                    android:id="@+id/et_register_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/bg_edit_register"
+                    android:gravity="center"
+                    android:hint="@string/nick_name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:textColor="@color/white_color"
+                    android:textColorHint="@color/white_color"
+                    android:textSize="16sp" />
+
+                <!-- 密码 -->
+                <EditText
+                    android:id="@+id/et_register_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/bg_edit_register"
+                    android:gravity="center"
+                    android:hint="@string/type_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:textColor="@color/white_color"
+                    android:textColorHint="@color/white_color"
+                    android:textSize="16sp" />
+
+                <!-- 确认密码 -->
+                <EditText
+                    android:id="@+id/et_register_repassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/bg_edit_register"
+                    android:gravity="center"
+                    android:hint="@string/retype_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:textColor="@color/white_color"
+                    android:textColorHint="@color/white_color"
+                    android:textSize="16sp" />
+
+                <!-- 注册按钮 -->
+                <Button
+                    android:id="@+id/bt_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/bg_register_selector"
+                    android:gravity="center"
+                    android:text="@string/sign_up"
+                    android:textAllCaps="false"
+                    android:textColor="@color/theme2_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- 已有账户 -->
+                <TextView
+                    android:id="@+id/tv_register_had_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/already_have_an_account"
+                    android:textColor="@color/white_color"
+                    android:textSize="16sp" />
+
+            </com.hiber.tools.layout.PercentLinearLayout>
+        </com.hiber.tools.layout.PercentLinearLayout>
+    </ScrollView>
+
+    <!-- 等待圈 -->
+    <com.mahose.mahose.widget.LoadWidget
+        android:id="@+id/wd_register_wait"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</com.hiber.tools.layout.PercentRelativeLayout>

@@ -59,27 +59,29 @@ class Frag_login : RootFrag() {
         val password = et_login_password.text.toString()
         // 非空判断
         if (TextUtils.isEmpty(username)) toast(getString(R.string.username_is_empty), 3000)
-        if (TextUtils.isEmpty(password)) toast(getString(R.string.password_is_empty), 3000)
-        // 触发
-        val loginHelper = LoginHelper(activity)
-        loginHelper.onPrepareListener = { wd_login_wait.showVisible() }
-        loginHelper.onEndListener = { wd_login_wait.showGone() }
-        loginHelper.onLoginSuccessListener = {// 登录成功
-            enum = LoginHelper.LOGIN_ENUM.LOGIN
-            toFrag(javaClass, lastFrag, enum, true, 0)
+        else if (TextUtils.isEmpty(password)) toast(getString(R.string.password_is_empty), 3000)
+        else{
+            // 触发
+            val loginHelper = LoginHelper(activity)
+            loginHelper.onPrepareListener = { wd_login_wait.showVisible() }
+            loginHelper.onEndListener = { wd_login_wait.showGone() }
+            loginHelper.onLoginSuccessListener = {// 登录成功
+                enum = LoginHelper.LOGIN_ENUM.LOGIN
+                toFrag(javaClass, lastFrag, enum, true, 0)
+            }
+            loginHelper.onLoginFailedListener = { // 登录失败
+                enum = LoginHelper.LOGIN_ENUM.LOGOUT
+                wd_login_error.visibility = View.VISIBLE
+            }
+            loginHelper.login(username, password)
         }
-        loginHelper.onLoginFailedListener = { // 登录失败
-            enum = LoginHelper.LOGIN_ENUM.LOGOUT
-            wd_login_error.visibility = View.VISIBLE
-        }
-        loginHelper.login(username, password)
     }
 
     override fun onBackPresss(): Boolean {
         // 等待页面
         if (wd_login_wait.visibility == View.VISIBLE) return true
         // 错误页面
-        if (wd_login_error.visibility == View.VISIBLE) {
+        else if (wd_login_error.visibility == View.VISIBLE) {
             wd_login_error.visibility = View.GONE
             return true
         }
