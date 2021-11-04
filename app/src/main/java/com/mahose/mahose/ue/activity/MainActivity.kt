@@ -28,6 +28,8 @@ class MainActivity : RootMAActivity() {
         Frag_privacy::class.java, // 隐私页
         Frag_cart::class.java, // 购物车页
         Frag_chat::class.java, // 客服页
+        Frag_login::class.java, // 登录页
+        Frag_registe::class.java, // 注册页
         Frag_test::class.java // 测试
     )
 

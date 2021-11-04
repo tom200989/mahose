@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.mahose.mahose.R
 
@@ -22,7 +23,7 @@ class LogoutWidget : RelativeLayout {
         // 此处初始化你的业务逻辑
         val inflate = View.inflate(context, R.layout.widget_logout, this)
         // 背景
-        val iv_bg = inflate.findViewById<Button>(R.id.iv_logout_bg)
+        val iv_bg = inflate.findViewById<ImageView>(R.id.iv_logout_bg)
         iv_bg.setOnClickListener(null)
         // OK按钮
         val btn_ok = inflate.findViewById<Button>(R.id.bt_logout_ok)

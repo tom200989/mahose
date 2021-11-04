@@ -5,16 +5,13 @@ import android.os.Looper
 import android.view.View
 import android.widget.FrameLayout
 import com.hiber.hiber.RootFrag
-import com.logma.logma.tool.Logma
 import com.mahose.mahose.BuildConfig
 import com.mahose.mahose.R
 import com.mahose.mahose.helper.LoginHelper
 import com.mahose.mahose.utils.OtherUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.frag_setting.*
-import java.util.*
 import kotlin.math.abs
-import kotlin.reflect.KClass
 
 /*
  * Created by PD on 2021/10/9.
@@ -33,12 +30,15 @@ class Frag_setting : RootFrag() {
         return R.layout.frag_setting
     }
 
-    override fun onNexts(p0: Any?, p1: View?, p2: String?) {
+    override fun onNexts(attach: Any?, view: View?, from: String?) {
+        // 其他页面跳转传递的数据 (如登录页)
+        if (from.equals(Frag_login::class.java.simpleName)) {
+            enum = attach as LoginHelper.LOGIN_ENUM
+        }
         // 初始化
         initData()
         // 点击事件
         initListener()
-
     }
 
     /**
@@ -55,7 +55,7 @@ class Frag_setting : RootFrag() {
      * 检查登录\登出\注册状态
      */
     private fun getLoginState() {
-        loginHelper = LoginHelper()
+        loginHelper = LoginHelper(activity)
         loginHelper?.onPrepareListener = { wd_load_setting.showVisible() }
         loginHelper?.onStateListener = { enum ->
             this.enum = enum // 状态
@@ -102,23 +102,40 @@ class Frag_setting : RootFrag() {
         rl_setting_cart.setOnClickListener { toPage(Frag_cart::class.java) }
         // 前往客服
         rl_setting_chat.setOnClickListener { toPage(Frag_chat::class.java) }
-        // 登出弹窗OK
-        wd_logout.onLogoutClickOkListener = {
-            // TODO: 11/2/2021  发起登出请求
-        }
         // 登录登出注册
         rl_setting_login.setOnClickListener {
-            // TODO: 10/22/2021  登录登出
             when (enum) {
-                LoginHelper.LOGIN_ENUM.LOGIN -> wd_logout.visibility = View.VISIBLE
-                LoginHelper.LOGIN_ENUM.LOGOUT -> {
-                    // TODO: 11/2/2021  跳转到登录页面
+                LoginHelper.LOGIN_ENUM.LOGIN -> {
+                    wd_logout.visibility = View.VISIBLE
+                    wd_logout.onLogoutClickOkListener = { logout() } // 发起登出请求
                 }
-                LoginHelper.LOGIN_ENUM.UNREGISTER -> {
-                    // TODO: 11/2/2021  跳转到注册页面
+                LoginHelper.LOGIN_ENUM.LOGOUT -> { // 跳转到登录页面
+                    lastFrag = Frag_setting::class.java
+                    toFrag(javaClass, Frag_login::class.java, null, true, 0)
+                }
+                LoginHelper.LOGIN_ENUM.UNREGISTER -> { // 跳转到注册页面
+                    lastFrag = Frag_setting::class.java
+                    toFrag(javaClass, Frag_registe::class.java, null, true, 0)
                 }
             }
         }
+    }
+
+    /**
+     * 登出
+     */
+    private fun logout() {
+        val loginHelper = LoginHelper(activity)
+        loginHelper.onPrepareListener = { wd_load_setting.showVisible() }
+        loginHelper.onEndListener = { wd_load_setting.showGone() }
+        loginHelper.onLogoutSuccessListener = {
+            enum = LoginHelper.LOGIN_ENUM.LOGOUT
+            tv_setting_login.text = getString(R.string.to_login) // 显示「去登录」
+            iv_setting_head.setImageResource(R.drawable.test_head) // 显示默认头像
+            toast(getString(R.string.logout_success), 3000)
+        }
+        loginHelper.onLogoutFailedListener = { toast(getString(R.string.logout_failed), 3000) }
+        loginHelper.logout("")
     }
 
     /**

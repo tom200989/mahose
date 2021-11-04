@@ -41,4 +41,10 @@
     <string name="i_want_to">I want to</string>
     <string name="do_u_want_to_logout">Do u want to logout?</string>
     <string name="no_thanks">No,thanks</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="username_is_empty">Username is Empty</string>
+    <string name="password_is_empty">password is Empty</string>
+    <string name="logout_success">logout success</string>
+    <string name="logout_failed">Logout Failed\nPlease try again</string>
 </resources>
