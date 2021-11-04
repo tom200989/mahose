@@ -30,7 +30,7 @@ class LoginHelper(activity: Activity) : BaseHelper() {
         // TODO: 10/27/2021  检查登录状态
         object : TimerHelper(activity) {
             override fun doSomething() {
-                onStateListener?.invoke(LOGIN_ENUM.LOGIN)
+                onStateListener?.invoke(LOGIN_ENUM.LOGOUT)
                 onEndListener?.invoke()
             }
         }.startDelay(1000)

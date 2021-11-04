@@ -36,7 +36,7 @@
     <string name="please_login_first">Please Login or Register first!</string>
     <string name="to_login">To Login</string>
     <string name="to_logout">To Logout</string>
-    <string name="to_registe">To Registe</string>
+    <string name="to_registe">To Register</string>
     <string name="logout">Logout</string>
     <string name="i_want_to">I want to</string>
     <string name="do_u_want_to_logout">Do u want to logout?</string>
@@ -47,4 +47,13 @@
     <string name="password_is_empty">password is Empty</string>
     <string name="logout_success">logout success</string>
     <string name="logout_failed">Logout Failed\nPlease try again</string>
+    <string name="registe">Register</string>
+    <string name="hello">Hello!</string>
+    <string name="welcome_to_planet">Welcome to planet of Mahose nylon app. feel it like home</string>
+    <string name="created_account">Create account</string>
+    <string name="your_email">Your email</string>
+    <string name="nick_name">Nick name</string>
+    <string name="type_password">Type password</string>
+    <string name="retype_password">Re-type password</string>
+    <string name="already_have_an_account">Aleady have an account?</string>
 </resources>

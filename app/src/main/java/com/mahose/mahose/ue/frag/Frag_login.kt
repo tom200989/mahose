@@ -40,6 +40,11 @@ class Frag_login : RootFrag() {
         bt_login.setOnClickListener { toLogin() }
         // 出错界面
         wd_login_error.onTryAaginListener = { toLogin() }
+        // 前往注册
+        tv_login_register.setOnClickListener {
+            lastFrag = Frag_login::class.java
+            toFrag(javaClass, Frag_registe::class.java, null, true, 0)
+        }
         // 忘记密码
         tv_login_forgot.setOnClickListener {
             // TODO: 11/3/2021  前往忘记密码界面
@@ -62,7 +67,7 @@ class Frag_login : RootFrag() {
         loginHelper.onLoginSuccessListener = {// 登录成功
             enum = LoginHelper.LOGIN_ENUM.LOGIN
             toFrag(javaClass, lastFrag, enum, true, 0)
-        } 
+        }
         loginHelper.onLoginFailedListener = { // 登录失败
             enum = LoginHelper.LOGIN_ENUM.LOGOUT
             wd_login_error.visibility = View.VISIBLE
@@ -78,6 +83,9 @@ class Frag_login : RootFrag() {
             wd_login_error.visibility = View.GONE
             return true
         }
+        
+        // 如果流程是「setting - login - register」那么从register返回时, 重置lastfrag为setting, 以免页面一直停留在login
+        if (lastFrag.simpleName.equals(Frag_login::class.java.simpleName)) lastFrag = Frag_setting::class.java
         // 跳转会上一页
         toFrag(javaClass, lastFrag, enum, true, 0)
         return true
