@@ -67,4 +67,11 @@
     <string name="get_verify_success">Get verify code success, please check your mailbox</string>
     <string name="get_verify_failed">Get verify code failed, please try again after 5 min</string>
     <string name="twice_password_is_not_same">twice password is not same</string>
+    <string name="email">Email</string>
+    <string name="verify_code">verify code</string>
+    <string name="new_password">new password</string>
+    <string name="input_8_16_password">input 8-16 digital password</string>
+    <string name="confirm">Confirm</string>
+    <string name="modify_password_success">Modify password successful</string>
+    <string name="modify_password_failed">Modify password failed\nPlease check your network\nOr try again</string>
 </resources>

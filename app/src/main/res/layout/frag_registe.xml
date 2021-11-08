@@ -153,6 +153,7 @@
 
                 <!-- 密码 -->
                 <EditText
+                    android:maxLength="16"
                     android:id="@+id/et_register_password"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -172,6 +173,7 @@
 
                 <!-- 确认密码 -->
                 <EditText
+                    android:maxLength="16"
                     android:id="@+id/et_register_repassword"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

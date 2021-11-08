@@ -47,7 +47,7 @@ class Frag_login : RootFrag() {
         }
         // 忘记密码
         tv_login_forgot.setOnClickListener {
-            // TODO: 11/3/2021  前往忘记密码界面
+            toFrag(javaClass, Frag_forgot::class.java, null, true, 0)
         }
     }
 
@@ -60,7 +60,7 @@ class Frag_login : RootFrag() {
         // 非空判断
         if (TextUtils.isEmpty(username)) toast(getString(R.string.username_is_empty), 3000)
         else if (TextUtils.isEmpty(password)) toast(getString(R.string.password_is_empty), 3000)
-        else{
+        else {
             // 触发
             val loginHelper = LoginHelper(activity)
             loginHelper.onPrepareListener = { wd_login_wait.showVisible() }
@@ -85,7 +85,7 @@ class Frag_login : RootFrag() {
             wd_login_error.visibility = View.GONE
             return true
         }
-        
+
         // 如果流程是「setting - login - register」那么从register返回时, 重置lastfrag为setting, 以免页面一直停留在login
         if (lastFrag.simpleName.equals(Frag_login::class.java.simpleName)) lastFrag = Frag_setting::class.java
         // 跳转会上一页

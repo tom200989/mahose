@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_color"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <!-- 标题 -->
+    <TextView
+        android:id="@+id/tv_forgot_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Find your password"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- 内容 -->
+    <com.hiber.tools.layout.PercentLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/bg_forgot"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <!-- email -->
+        <com.hiber.tools.layout.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_forgot_email_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/dark_gray_color2"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_forgot_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_forgot_email_subtitle"
+                android:background="@color/white_color"
+                android:hint="sample@gmail.com"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/theme2_color" />
+
+        </com.hiber.tools.layout.PercentRelativeLayout>
+
+        <!-- verify -->
+        <com.hiber.tools.layout.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_forgot_email_verify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/verify"
+                android:textColor="@color/dark_gray_color2"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_forgot_verify_code"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_forgot_email_verify"
+                android:background="@color/white_color"
+                android:hint="@string/verify_code"
+                android:inputType="text"
+                android:maxLength="6"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/bt_forgot_verify"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/et_forgot_verify_code"
+                android:background="@drawable/btn_forgot_verify_selector"
+                android:text="@string/get"
+                android:textAllCaps="false"
+                android:textColor="@color/white_color" />
+
+            <View
+                android:layout_width="140dp"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/theme2_color" />
+
+        </com.hiber.tools.layout.PercentRelativeLayout>
+
+        <!-- new password -->
+        <com.hiber.tools.layout.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_forgot_email_new_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_password"
+                android:textColor="@color/dark_gray_color2"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_forgot_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_forgot_email_new_password"
+                android:background="@color/white_color"
+                android:hint="@string/input_8_16_password"
+                android:inputType="textPassword"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/theme2_color" />
+
+        </com.hiber.tools.layout.PercentRelativeLayout>
+
+        <!-- 按钮 -->
+        <Button
+            android:id="@+id/bt_forgot_commit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/btn_forgot_verify_selector"
+            android:text="@string/confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+    </com.hiber.tools.layout.PercentLinearLayout>
+
+    <!-- 等待圈 -->
+    <com.mahose.mahose.widget.LoadWidget
+        android:id="@+id/wd_forgot_wait"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</com.hiber.tools.layout.PercentRelativeLayout>

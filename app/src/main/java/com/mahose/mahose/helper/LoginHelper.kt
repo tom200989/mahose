@@ -19,6 +19,8 @@ class LoginHelper(activity: Activity) : BaseHelper() {
     var onGetVerifyFailed:(()-> Unit)?= null // 获取验证码失败
     var onRegisterSuccess:(()-> Unit)?= null // 注册成功
     var onRegisterFailed:(()-> Unit)?= null // 注册失败
+    var onModifySuccess:(()-> Unit)?= null // 修改密码成功
+    var onModifyFailed:(()-> Unit)?= null // 修改密码失败
     
     var activity: Activity? = null
 
@@ -109,6 +111,25 @@ class LoginHelper(activity: Activity) : BaseHelper() {
                     onRegisterSuccess?.invoke()
                 } else {
                     onRegisterFailed?.invoke()
+                }
+                onEndListener?.invoke()
+            }
+        }.startDelay(1000)
+    }
+
+    /**
+     * 修改密码
+     */
+    fun modifyPassword(email: String, new_password: String){
+        val test_modify = true // 模拟修改状态
+        // TODO: 11/4/2021  修改请求
+        onPrepareListener?.invoke()
+        object : TimerHelper(activity) {
+            override fun doSomething() {
+                if (test_modify) {
+                    onModifySuccess?.invoke()
+                } else {
+                    onModifyFailed?.invoke()
                 }
                 onEndListener?.invoke()
             }

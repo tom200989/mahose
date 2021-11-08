@@ -30,6 +30,7 @@ class MainActivity : RootMAActivity() {
         Frag_chat::class.java, // 客服页
         Frag_login::class.java, // 登录页
         Frag_registe::class.java, // 注册页
+        Frag_forgot::class.java, // 忘记页
         Frag_test::class.java // 测试
     )
 
