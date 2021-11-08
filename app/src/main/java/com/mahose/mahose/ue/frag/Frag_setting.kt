@@ -4,10 +4,12 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.FrameLayout
+import com.hiber.cons.TimerState
 import com.hiber.hiber.RootFrag
 import com.mahose.mahose.BuildConfig
 import com.mahose.mahose.R
 import com.mahose.mahose.helper.LoginHelper
+import com.mahose.mahose.helper.LoginHelper.*
 import com.mahose.mahose.utils.OtherUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.frag_setting.*
@@ -22,23 +24,34 @@ class Frag_setting : RootFrag() {
     var current_open = false // 当前左侧面板是否开启
     var isPoping = false // 左侧面板是否正在开启
     var loginHelper: LoginHelper? = null
-    var enum: LoginHelper.LOGIN_ENUM? = null // 登录状态(登录\登出\未注册)
+    var enum: LOGIN_ENUM? = LOGIN_ENUM.UNKNOWN // 登录状态(登录\登出\未注册\未知)
 
     override fun onInflateLayout(): Int {
         // 显示tab
         activity.wd_tab.visibility = View.VISIBLE
+        // 启动定时器
+        timerState = TimerState.ON_BUT_OFF_WHEN_HIDE_AND_PAUSE
+        timer_period = 1000
         return R.layout.frag_setting
     }
 
     override fun onNexts(attach: Any?, view: View?, from: String?) {
         // 其他页面跳转传递的数据 (如登录页)
         if (from.equals(Frag_login::class.java.simpleName)) {
-            enum = attach as LoginHelper.LOGIN_ENUM
+            enum = attach as LOGIN_ENUM
         }
         // 初始化
         initData()
         // 点击事件
         initListener()
+    }
+
+    /**
+     * 定时器
+     */
+    override fun setTimerTask() {
+        super.setTimerTask()
+        getLoginState()
     }
 
     /**
@@ -56,25 +69,28 @@ class Frag_setting : RootFrag() {
      */
     private fun getLoginState() {
         loginHelper = LoginHelper(activity)
-        loginHelper?.onPrepareListener = { wd_load_setting.showVisible() }
+        // loginHelper?.onPrepareListener = { wd_load_setting.showVisible() }
         loginHelper?.onStateListener = { enum ->
             this.enum = enum // 状态
             when (enum) {
-                LoginHelper.LOGIN_ENUM.LOGIN -> {
+                LOGIN_ENUM.LOGIN -> {
                     // TODO: 10/27/2021 获取头像 + 用户名
-                    tv_setting_login.text = getString(R.string.to_logout)
+                    tv_setting_login.text = getRootString(R.string.to_logout)
                 }
-                LoginHelper.LOGIN_ENUM.LOGOUT -> {
+                LOGIN_ENUM.LOGOUT -> {
                     // TODO: 10/27/2021  显示默认头像
-                    tv_setting_login.text = getString(R.string.to_login)
+                    tv_setting_login.text = getRootString(R.string.to_login)
                 }
-                LoginHelper.LOGIN_ENUM.UNREGISTER -> {
+                LOGIN_ENUM.UNREGISTER -> {
                     // TODO: 10/27/2021  显示默认头像
-                    tv_setting_login.text = getString(R.string.to_registe)
+                    tv_setting_login.text = getRootString(R.string.to_registe)
+                }
+                else -> {// 未知状态
+                    tv_setting_login.text = getRootString(R.string.to_login)
                 }
             }
         }
-        loginHelper?.onEndListener = { wd_load_setting.showGone() }
+        // loginHelper?.onEndListener = { wd_load_setting.showGone() }
         loginHelper?.getState()
     }
 
@@ -105,17 +121,20 @@ class Frag_setting : RootFrag() {
         // 登录登出注册
         rl_setting_login.setOnClickListener {
             when (enum) {
-                LoginHelper.LOGIN_ENUM.LOGIN -> {
+                LOGIN_ENUM.LOGIN -> {
                     wd_logout.visibility = View.VISIBLE
                     wd_logout.onLogoutClickOkListener = { logout() } // 发起登出请求
                 }
-                LoginHelper.LOGIN_ENUM.LOGOUT -> { // 跳转到登录页面
+                LOGIN_ENUM.LOGOUT -> { // 跳转到登录页面
                     lastFrag = Frag_setting::class.java
                     toFrag(javaClass, Frag_login::class.java, null, true, 0)
                 }
-                LoginHelper.LOGIN_ENUM.UNREGISTER -> { // 跳转到注册页面
+                LOGIN_ENUM.UNREGISTER -> { // 跳转到注册页面
                     lastFrag = Frag_setting::class.java
                     toFrag(javaClass, Frag_registe::class.java, null, true, 0)
+                }
+                else -> {// 未知状态 - 提示
+                    toast(getString(R.string.network_is_loading),3000)
                 }
             }
         }
@@ -129,12 +148,12 @@ class Frag_setting : RootFrag() {
         loginHelper.onPrepareListener = { wd_load_setting.showVisible() }
         loginHelper.onEndListener = { wd_load_setting.showGone() }
         loginHelper.onLogoutSuccessListener = {
-            enum = LoginHelper.LOGIN_ENUM.LOGOUT
-            tv_setting_login.text = getString(R.string.to_login) // 显示「去登录」
+            enum = LOGIN_ENUM.LOGOUT
+            tv_setting_login.text = getRootString(R.string.to_login) // 显示「去登录」
             iv_setting_head.setImageResource(R.drawable.test_head) // 显示默认头像
-            toast(getString(R.string.logout_success), 3000)
+            toast(R.string.logout_success, 3000)
         }
-        loginHelper.onLogoutFailedListener = { toast(getString(R.string.logout_failed), 3000) }
+        loginHelper.onLogoutFailedListener = { toast(R.string.logout_failed, 3000) }
         loginHelper.logout("")
     }
 
@@ -142,10 +161,10 @@ class Frag_setting : RootFrag() {
      * 跳转页面
      */
     private fun toPage(clazz: Class<out RootFrag>) {
-        if (enum == LoginHelper.LOGIN_ENUM.LOGIN) {
+        if (enum == LOGIN_ENUM.LOGIN) {
             toFrag(javaClass, clazz, null, true, 0)
         } else {
-            toast(getString(R.string.please_login_first), 3000)
+            toast(R.string.please_login_first, 3000)
         }
     }
 

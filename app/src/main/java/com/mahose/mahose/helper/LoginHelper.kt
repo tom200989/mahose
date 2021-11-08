@@ -8,20 +8,20 @@ import com.hiber.tools.TimerHelper
 /*
  * Created by 54484 on 10/27/2021.
  */
-class LoginHelper(activity: Activity) : BaseHelper() {
+public class LoginHelper(activity: Activity) : BaseHelper() {
 
     var onStateListener: ((state: LOGIN_ENUM) -> Unit)? = null // 获取登录登出注册状态
     var onLoginSuccessListener: (() -> Unit)? = null // 登录成功
     var onLoginFailedListener: (() -> Unit)? = null // 登录失败
     var onLogoutSuccessListener: (() -> Unit)? = null // 登出成功
     var onLogoutFailedListener: (() -> Unit)? = null // 登出失败
-    var onGetVerifySuccess:(()-> Unit)?= null // 获取验证码成功
-    var onGetVerifyFailed:(()-> Unit)?= null // 获取验证码失败
-    var onRegisterSuccess:(()-> Unit)?= null // 注册成功
-    var onRegisterFailed:(()-> Unit)?= null // 注册失败
-    var onModifySuccess:(()-> Unit)?= null // 修改密码成功
-    var onModifyFailed:(()-> Unit)?= null // 修改密码失败
-    
+    var onGetVerifySuccess: (() -> Unit)? = null // 获取验证码成功
+    var onGetVerifyFailed: (() -> Unit)? = null // 获取验证码失败
+    var onRegisterSuccess: (() -> Unit)? = null // 注册成功
+    var onRegisterFailed: (() -> Unit)? = null // 注册失败
+    var onModifySuccess: (() -> Unit)? = null // 修改密码成功
+    var onModifyFailed: (() -> Unit)? = null // 修改密码失败
+
     var activity: Activity? = null
 
     init {
@@ -83,7 +83,7 @@ class LoginHelper(activity: Activity) : BaseHelper() {
     /**
      * 获取验证码
      */
-    fun getVerify(email: String){
+    fun getVerify(email: String) {
         val test_verify = true
         onPrepareListener?.invoke()
         object : TimerHelper(activity) {
@@ -101,7 +101,7 @@ class LoginHelper(activity: Activity) : BaseHelper() {
     /**
      * 注册
      */
-    fun register(email:String, username: String, password: String){
+    fun register(email: String, username: String, password: String) {
         val test_register = true // 模拟注册状态
         // TODO: 11/4/2021  注册请求
         onPrepareListener?.invoke()
@@ -120,7 +120,7 @@ class LoginHelper(activity: Activity) : BaseHelper() {
     /**
      * 修改密码
      */
-    fun modifyPassword(email: String, new_password: String){
+    fun modifyPassword(email: String, new_password: String) {
         val test_modify = true // 模拟修改状态
         // TODO: 11/4/2021  修改请求
         onPrepareListener?.invoke()
@@ -139,7 +139,7 @@ class LoginHelper(activity: Activity) : BaseHelper() {
     /**
      * 当前状态
      */
-    enum class LOGIN_ENUM {
-        LOGIN, LOGOUT, UNREGISTER
+    public enum class LOGIN_ENUM {
+        LOGIN, LOGOUT, UNREGISTER, UNKNOWN
     }
 }

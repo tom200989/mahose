@@ -45,11 +45,11 @@ class Frag_search : RootFrag() {
         // 回退
         rl_search_back.setOnClickListener { onBackPresss() }
         // 历史记录
-        wd_flow.onClickSearchItemListener = {
+        wd_flow.onClickSearchItemListener = { item_text ->
             // 隐藏键盘
             OtherUtils.setKeyboard(et_search, activity, false)
             // 搜索
-            toSearch(it)
+            toSearch(item_text)
         }
         // Go!
         tv_search_go.setOnClickListener {
