@@ -1,5 +1,6 @@
 package com.mahose.mahose.utils
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
@@ -21,16 +22,14 @@ import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.mahose.mahose.R
-import com.mahose.mahose.bean.HoseCons
-import com.mahose.mahose.bean.ListBean
-import com.mahose.mahose.bean.SubBean
-import com.mahose.mahose.bean.ThemeBean
+import com.mahose.mahose.bean.*
 import com.nineoldandroids.view.ViewHelper
 import com.rootmastatic.rootmastatic.util.SPUtils
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.InputStream
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
@@ -311,6 +310,52 @@ class OtherUtils {
             themeBean.title = split[2]
             return themeBean
         }
+
+        /**
+         * 获取聊天模拟数据
+         */
+        @SuppressLint("SimpleDateFormat")
+        fun getChatInfo(activity: Activity): ArrayList<ChatBean> {
+            val contents = arrayOf(
+                "这是一个短的测试文本",
+                "这是一个长的测试文本,这是一个长的测试文本,这是一个长的测试文本,这是一个长的测试文本,这是一个长的测试文本",
+            )
+
+            val pics = arrayOf(R.drawable.test0, R.drawable.test1)
+
+            val chatbeans = ArrayList<ChatBean>()
+            for (i in 0..20) {
+                // 角色随机数
+                val nextInt = Random.nextInt(0, 20)
+                val isKefu = nextInt % 2 == 0
+
+                // 类型随机数
+                val nextInt2 = Random.nextInt(0, 20)
+                val type = if (nextInt2 % 2 == 0) ChatBean.CHAT_TYPE.TEXT else ChatBean.CHAT_TYPE.PIC
+
+                // 内容随机数
+                val nextInt3 = Random.nextInt(0, 20)
+                val content = contents[nextInt3 % 2]
+
+                // 图片随机数
+                val nextInt4 = Random.nextInt(0, 20)
+                val pic = pics[nextInt4 % 2]
+
+                val chatBean = ChatBean()
+                chatBean.isKefu = isKefu
+                chatBean.type = type
+                chatBean.head_bitmap = draw_to_bitmap(activity, if (isKefu) R.drawable.chat_head else R.drawable.chat_who)
+                chatBean.content = content
+                chatBean.pic = draw_to_bitmap(activity, pic)
+                chatBean.pic_url = "http://www.baidu.com"
+                chatBean.time = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date())
+
+                // 添加进去
+                chatbeans.add(chatBean)
+            }
+            return chatbeans
+        }
+
     }
 
 }

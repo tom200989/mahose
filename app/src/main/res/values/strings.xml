@@ -75,4 +75,5 @@
     <string name="modify_password_success">Modify password successful</string>
     <string name="modify_password_failed">Modify password failed\nPlease check your network\nOr try again</string>
     <string name="network_is_loading">Network is loading.Please wait a minute</string>
+    <string name="service_center">Service Center</string>
 </resources>

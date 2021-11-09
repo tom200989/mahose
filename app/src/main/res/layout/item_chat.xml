@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <!-- ****** 客服 -->
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:id="@+id/rl_item_chat_kefu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <!-- 客服 -->
+        <com.hiber.tools.layout.PercentRelativeLayout
+            android:id="@+id/rl_item_chat_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:minHeight="40dp">
+
+            <!-- 头像 -->
+            <ImageView
+                android:id="@+id/iv_item_chat_head"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/chat_head" />
+
+            <!-- 内容 -->
+            <TextView
+                android:id="@+id/tv_item_chat_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/iv_item_chat_head"
+                android:background="@drawable/bg_item_chat_tv"
+                android:gravity="center_vertical"
+                android:minHeight="40dp"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="Unknown Message"
+                android:textColor="@color/white_color"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <!-- 图片 -->
+            <com.hiber.tools.layout.PercentRelativeLayout
+                android:id="@+id/rl_item_chat_pic"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/iv_item_chat_head"
+                android:background="@drawable/bg_item_chat_iv"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_item_chat_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@color/black_color"
+                    android:scaleType="fitXY" />
+
+            </com.hiber.tools.layout.PercentRelativeLayout>
+
+        </com.hiber.tools.layout.PercentRelativeLayout>
+
+        <!-- 时间 -->
+        <TextView
+            android:id="@+id/tv_item_chat_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_item_chat_all"
+            android:layout_marginStart="50dp"
+            android:text="2021-11-08 15:05:58"
+            android:textColor="@color/dark_gray_color"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+    <!-- ****** 顾客 -->
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:id="@+id/rl_item_chat_guke"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <!-- 顾客 -->
+        <com.hiber.tools.layout.PercentRelativeLayout
+            android:id="@+id/rl_item_chat_all2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:minHeight="40dp">
+
+            <!-- 头像 -->
+            <ImageView
+                android:id="@+id/iv_item_chat_head2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/chat_who" />
+
+            <!-- 内容 -->
+            <TextView
+                android:id="@+id/tv_item_chat_content2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/iv_item_chat_head2"
+                android:background="@drawable/bg_item_chat_tv2"
+                android:gravity="center_vertical"
+                android:minHeight="40dp"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="Unknown Message"
+                android:textColor="@color/white_color"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <!-- 图片 -->
+            <com.hiber.tools.layout.PercentRelativeLayout
+                android:id="@+id/rl_item_chat_pic2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/iv_item_chat_head2"
+                android:background="@drawable/bg_item_chat_iv"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_item_chat_pic2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:background="@color/black_color"
+                    android:scaleType="fitXY" />
+
+            </com.hiber.tools.layout.PercentRelativeLayout>
+
+        </com.hiber.tools.layout.PercentRelativeLayout>
+
+        <!-- 时间 -->
+        <TextView
+            android:id="@+id/tv_item_chat_time2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_item_chat_all2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50dp"
+            android:text="2021-11-08 15:05:58"
+            android:textColor="@color/dark_gray_color"
+            android:textSize="10sp"
+            tools:ignore="SmallSp" />
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+</com.hiber.tools.layout.PercentRelativeLayout>

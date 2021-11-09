@@ -6,10 +6,111 @@
     android:layout_height="match_parent"
     tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- 标题 -->
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:id="@+id/rl_chat_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <!-- 回退建 -->
+        <RelativeLayout
+            android:id="@+id/rl_chat_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/back_theme" />
+
+        </RelativeLayout>
+
+        <!-- 标题 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/service_center"
+            android:textColor="@color/theme_color"
+            android:textStyle="bold"
+            app:layout_textSizePercent="2.5%sh" />
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+    <!-- 底部 -->
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:id="@+id/rl_chat_bottom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="客服中心" />
+        android:layout_alignParentBottom="true"
+        android:background="@color/theme_color">
+
+        <!-- add pic -->
+        <com.hiber.tools.layout.PercentRelativeLayout
+            android:id="@+id/rl_chat_add_pic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/chat_add" />
+        </com.hiber.tools.layout.PercentRelativeLayout>
+
+        <!-- 发送 -->
+        <Button
+            android:id="@+id/bt_chat_send"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/btn_chat_send_selector"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Send"
+            android:textAllCaps="false"
+            android:textColor="@color/white_color" />
+
+        <!-- 编辑区 -->
+        <EditText
+            android:id="@+id/et_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toStartOf="@id/bt_chat_send"
+            android:layout_toEndOf="@id/rl_chat_add_pic"
+            android:background="@drawable/bg_chat_edit"
+            android:hint="Please text"
+            android:inputType="textMultiLine"
+            android:maxHeight="150dp"
+            android:maxLength="500"
+            android:minHeight="30dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/theme_color"
+            android:textSize="14sp" />
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+    <!-- 留言区域 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rl_chat_bottom"
+        android:layout_below="@id/rl_chat_title"
+        android:layout_margin="10dp"
+        android:fadeScrollbars="false"
+        android:fadingEdgeLength="0dp"
+        android:scrollbars="none" />
 
 </com.hiber.tools.layout.PercentRelativeLayout>
