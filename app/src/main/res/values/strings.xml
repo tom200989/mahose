@@ -76,4 +76,7 @@
     <string name="modify_password_failed">Modify password failed\nPlease check your network\nOr try again</string>
     <string name="network_is_loading">Network is loading.Please wait a minute</string>
     <string name="service_center">Service Center</string>
+    <string name="order">Order</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="you_haven_add_any">You haven\'t added any items to the shopping cart yet</string>
 </resources>

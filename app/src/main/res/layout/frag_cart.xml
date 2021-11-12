@@ -6,10 +6,45 @@
     android:layout_height="match_parent"
     tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="购物车" />
+    <!-- 标题 -->
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:id="@+id/rl_cart_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <!-- 回退建 -->
+        <RelativeLayout
+            android:id="@+id/rl_cart_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/back_theme" />
+
+        </RelativeLayout>
+
+        <!-- 标题 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/order"
+            android:textColor="@color/theme_color"
+            android:textStyle="bold"
+            app:layout_textSizePercent="2.5%sh" />
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+    <!-- 内容 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_cart_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_cart_title"
+        android:layout_margin="15dp" />
 
 </com.hiber.tools.layout.PercentRelativeLayout>

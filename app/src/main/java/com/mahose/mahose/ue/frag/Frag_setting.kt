@@ -134,7 +134,7 @@ class Frag_setting : RootFrag() {
                     toFrag(javaClass, Frag_registe::class.java, null, true, 0)
                 }
                 else -> {// 未知状态 - 提示
-                    toast(getString(R.string.network_is_loading),3000)
+                    toast(getString(R.string.network_is_loading), 3000)
                 }
             }
         }
@@ -161,11 +161,25 @@ class Frag_setting : RootFrag() {
      * 跳转页面
      */
     private fun toPage(clazz: Class<out RootFrag>) {
-        if (enum == LOGIN_ENUM.LOGIN) {
-            toFrag(javaClass, clazz, null, true, 0)
-        } else {
+        if (enum == LOGIN_ENUM.LOGIN) {// * 已登录
+            
+            if (getCartCount() > 0) {// 商品数量大于0 - 购物车界面
+                toFrag(javaClass, clazz, null, true, 0)
+            } else {// 提示没有添加商品
+                toast(getString(R.string.you_haven_add_any), 3000)
+            }
+            
+        } else {// * 未注册
             toast(R.string.please_login_first, 3000)
         }
+    }
+
+    /**
+     * 获取购物车数量
+     */
+    private fun getCartCount(): Int {
+        // TODO: 11/12/2021  获取购物车数量 (模拟数据)
+        return 1
     }
 
     /**

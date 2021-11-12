@@ -356,6 +356,23 @@ class OtherUtils {
             return chatbeans
         }
 
+        /**
+         * 获取...模拟数据
+         */
+        fun getCartInfo(activity: Activity): ArrayList<CartBean> {
+            val cartBeans = ArrayList<CartBean>()
+            for (i in 0..3) {
+                val cartBean = CartBean()
+                cartBean.type = CartBean.TYPE.NORMAL
+                cartBean.pic = draw_to_bitmap(activity, R.drawable.test_head)
+                cartBean.title = "这是一个测试的标题"
+                cartBean.subtitle = "商品ID: 00989976783334"
+                cartBean.count = Random.nextInt(1, 5)
+                cartBean.price = Random.nextLong(10L, 15L)
+                cartBeans.add(cartBean)
+            }
+            return cartBeans
+        }
     }
 
 }

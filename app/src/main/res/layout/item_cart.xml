@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <!-- **** 分割线 -->
+    <View
+        android:id="@+id/v_item_cart_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/theme_color" />
+
+    <!-- **** 条目 -->
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:id="@+id/rl_item_cart_each"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/v_item_cart_line"
+        android:visibility="visible">
+
+        <!-- 图片 -->
+        <ImageView
+            android:id="@+id/iv_item_cart_pic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/test11" />
+
+        <!-- 标题 -->
+        <com.hiber.tools.layout.PercentLinearLayout
+            android:id="@+id/rl_item_cart_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/iv_item_cart_pic"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_item_cart_title"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Merchant"
+                android:textColor="@color/theme_color"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_item_cart_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID:88989702123"
+                android:textColor="@color/dark_gray_color"
+                android:textSize="12sp" />
+
+        </com.hiber.tools.layout.PercentLinearLayout>
+
+        <!-- 价格 -->
+        <TextView
+            android:id="@+id/tv_item_cart_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:gravity="center"
+            android:text="$200"
+            android:textColor="@color/theme_color"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- 加减 -->
+        <com.hiber.tools.layout.PercentLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="25dp"
+            android:layout_toStartOf="@id/tv_item_cart_price"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bt_item_cart_minus"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/bg_item_cart_count"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tv_item_cart_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="1"
+                android:textColor="@color/theme_color" />
+
+            <Button
+                android:id="@+id/bt_item_cart_add"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/bg_item_cart_count"
+                android:text="+" />
+
+        </com.hiber.tools.layout.PercentLinearLayout>
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+    <!-- **** 总价 -->
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:id="@+id/rl_item_cart_subtotal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:visibility="gone">
+
+        <!-- 小计 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:text="@string/subtotal"
+            android:textColor="@color/dark_gray_color"
+            android:textSize="18sp" />
+
+        <!-- 具体数字 -->
+        <TextView
+            android:id="@+id/tv_item_cart_subtotal_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:text="$90.00"
+            android:textColor="@color/theme_color"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+</com.hiber.tools.layout.PercentRelativeLayout>
