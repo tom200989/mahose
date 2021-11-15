@@ -39,12 +39,78 @@
 
     </com.hiber.tools.layout.PercentRelativeLayout>
 
+    <!-- 小计 -->
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:id="@+id/rl_cart_subtotal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray_color">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:text="@string/subtotal"
+            android:textColor="@color/theme2_color"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_cart_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/bg_cart_pay_selector"
+            android:paddingStart="20dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="3dp"
+            android:text="Pay"
+            android:textColor="@color/white_color"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_cart_subtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:text="$0.00"
+            android:textColor="@color/theme_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
     <!-- 内容 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_cart_order"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/rl_cart_subtotal"
         android:layout_below="@id/rl_cart_title"
-        android:layout_margin="15dp" />
+        android:layout_margin="15dp"
+        android:fadeScrollbars="false"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dp"
+        android:scrollbars="none" />
+    
+    <!-- 付款状态 -->
+    <com.mahose.mahose.widget.PayWidget
+        android:id="@+id/wd_pay"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- 等待圈 -->
+    <com.mahose.mahose.widget.LoadWidget
+        android:id="@+id/wd_cart_load"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </com.hiber.tools.layout.PercentRelativeLayout>

@@ -363,7 +363,6 @@ class OtherUtils {
             val cartBeans = ArrayList<CartBean>()
             for (i in 0..3) {
                 val cartBean = CartBean()
-                cartBean.type = CartBean.TYPE.NORMAL
                 cartBean.pic = draw_to_bitmap(activity, R.drawable.test_head)
                 cartBean.title = "这是一个测试的标题"
                 cartBean.subtitle = "商品ID: 00989976783334"

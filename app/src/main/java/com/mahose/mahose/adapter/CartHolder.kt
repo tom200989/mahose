@@ -23,10 +23,6 @@ class CartHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var tv_count: TextView? = null // 数量
     var bt_add: Button? = null // 加号
 
-    // 小计条目
-    var rl_subtotal: RelativeLayout? = null // 总布局
-    var tv_subtotal: TextView? = null // 总计
-
     init {
         // 普通条目
         rl_each = itemView.findViewById(R.id.rl_item_cart_each)
@@ -37,9 +33,6 @@ class CartHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         bt_minus = itemView.findViewById(R.id.bt_item_cart_minus)
         tv_count = itemView.findViewById(R.id.tv_item_cart_count)
         bt_add = itemView.findViewById(R.id.bt_item_cart_add)
-        // 小计条目
-        rl_subtotal = itemView.findViewById(R.id.rl_item_cart_subtotal)
-        tv_subtotal = itemView.findViewById(R.id.tv_item_cart_subtotal_price)
     }
 
 }

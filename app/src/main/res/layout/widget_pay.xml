@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hiber.tools.layout.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ContentDescription,Autofill,LabelFor,HardcodedText,RelativeOverlap">
+
+    <ImageView
+        android:id="@+id/iv_pay_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.4"
+        android:background="@color/dark_gray_color" />
+
+    <com.hiber.tools.layout.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/bg_cart_dialog_bg">
+
+        <ImageView
+            android:id="@+id/iv_pay_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="150dp"
+            android:src="@drawable/pay_success" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_pay_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_pay_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="80dp"
+            android:text="@string/pay_success"
+            android:textColor="@color/theme_color"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/bt_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_pay_des"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/bg_pay_state_selector"
+            android:paddingStart="30dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="30dp"
+            android:paddingBottom="5dp"
+            android:text="@string/ok"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+    </com.hiber.tools.layout.PercentRelativeLayout>
+
+</com.hiber.tools.layout.PercentRelativeLayout>

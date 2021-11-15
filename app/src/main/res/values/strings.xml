@@ -79,4 +79,6 @@
     <string name="order">Order</string>
     <string name="subtotal">Subtotal</string>
     <string name="you_haven_add_any">You haven\'t added any items to the shopping cart yet</string>
+    <string name="pay_success">Pay success!</string>
+    <string name="pay_failed">Pay Failed!\nPlease try again</string>
 </resources>
