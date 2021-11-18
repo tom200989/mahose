@@ -104,6 +104,8 @@ class Frag_video : RootFrag() {
                 }
                 TitleWidget.TITLE_ENUM.COLLECT -> {
                     // TODO: 2021/10/13  点击了收藏按钮
+                    lastFrag = Frag_video::class.java
+                    toFrag(javaClass, Frag_like::class.java, null, true, 0)
                 }
             }
         }

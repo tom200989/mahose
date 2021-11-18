@@ -21,6 +21,7 @@ class Frag_cart : RootFrag() {
 
     var cartBeans: ArrayList<CartBean> = ArrayList()
     var cartAdapter: CartAdapter? = null
+    var isPaySuccess = false // 是否付款成功, 用于付款后判断
 
     override fun onInflateLayout(): Int {
         return R.layout.frag_cart
@@ -40,7 +41,8 @@ class Frag_cart : RootFrag() {
         tv_cart_pay.setOnClickListener { toPay() }
         // 点击OK - 跳转到setting
         wd_pay.onClickPayOKListener = {
-            toFrag(javaClass, Frag_setting::class.java, null, true, 0)
+            if (isPaySuccess) // 如付款成功 - 跳回设置页 - 否则不跳转
+                toFrag(javaClass, Frag_setting::class.java, null, true, 0)
         }
     }
 
@@ -51,8 +53,14 @@ class Frag_cart : RootFrag() {
         val payHelper = PayHelper()
         payHelper.onPrepareListener = { wd_cart_load.showVisible() }
         payHelper.onEndListener = { wd_cart_load.showGone() }
-        payHelper.onPaySuccess = { wd_pay.showSuccess() } // 付款成功界面
-        payHelper.onPayFailed = { wd_pay.showFailed() } // 付款失败界面
+        payHelper.onPaySuccess = { // 付款成功界面
+            isPaySuccess = true
+            wd_pay.showSuccess()
+        }
+        payHelper.onPayFailed = {// 付款失败界面
+            isPaySuccess = false
+            wd_pay.showFailed()
+        }
         payHelper.pay(activity)
     }
 

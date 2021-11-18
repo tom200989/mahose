@@ -81,4 +81,6 @@
     <string name="you_haven_add_any">You haven\'t added any items to the shopping cart yet</string>
     <string name="pay_success">Pay success!</string>
     <string name="pay_failed">Pay Failed!\nPlease try again</string>
+    <string name="like">Like</string>
+    <string name="do_not_click_fast">Do not click so fast!</string>
 </resources>

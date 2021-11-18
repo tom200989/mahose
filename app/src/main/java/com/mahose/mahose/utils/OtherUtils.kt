@@ -23,6 +23,8 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.mahose.mahose.R
 import com.mahose.mahose.bean.*
+import com.mahose.mahose.bean.LikeBean.LIKE_TYPE
+import com.mahose.mahose.bean.LikeBean.LIKE_TYPE.*
 import com.nineoldandroids.view.ViewHelper
 import com.rootmastatic.rootmastatic.util.SPUtils
 import java.io.ByteArrayInputStream
@@ -357,7 +359,7 @@ class OtherUtils {
         }
 
         /**
-         * 获取...模拟数据
+         * 获取购物车模拟数据
          */
         fun getCartInfo(activity: Activity): ArrayList<CartBean> {
             val cartBeans = ArrayList<CartBean>()
@@ -371,6 +373,24 @@ class OtherUtils {
                 cartBeans.add(cartBean)
             }
             return cartBeans
+        }
+
+        /**
+         * 获取收藏模拟数据
+         */
+        fun getLikeInfo(activity: Activity): ArrayList<LikeBean> {
+            val likebeans = ArrayList<LikeBean>()
+            for (i in 0..21) {
+                val pic_random = Random.nextInt(0, 6)
+
+                val likebean = LikeBean()
+                likebean.id = Random.nextInt(200000, 800000).toString()
+                likebean.type = if (i % 2 == 0) PIC else VIDEO
+                likebean.thumb = draw_to_bitmap(activity, pics[pic_random][0])
+                likebean.url = "www.baidu.com"
+                likebeans.add(likebean)
+            }
+            return likebeans
         }
     }
 
